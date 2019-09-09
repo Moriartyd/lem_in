@@ -6,7 +6,7 @@
 #    By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/09 13:09:12 by cpollich          #+#    #+#              #
-#    Updated: 2019/09/09 14:29:10 by cpollich         ###   ########.fr        #
+#    Updated: 2019/09/09 22:22:31 by cpollich         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -62,3 +62,6 @@ fclean: clean
 	@echo "\033[3;36mProject fully cleaned\033[0m"
 
 re: fclean all
+
+test:
+	gcc -g main.c src/* libft/libft.a -I./inc -I./libft/include -o test
