@@ -1,15 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lem_memory.c                                       :+:      :+:    :+:   */
+/*   ft_strnchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/09 16:11:04 by cpollich          #+#    #+#             */
-/*   Updated: 2019/09/09 16:27:25 by cpollich         ###   ########.fr       */
+/*   Created: 2019/09/09 19:12:28 by cpollich          #+#    #+#             */
+/*   Updated: 2019/09/09 19:12:35 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lem_in.h"
+int		ft_strnchr(const char *s, char ch, int n)
+{
+	int		res;
 
-t_room		**add_room(t_lemin **lem, )
+	if (ch == '\0' || !s)
+		return (-1);
+	res = 0;
+	while (*s)
+	{
+		if (*s == ch)
+			n--;
+		if (n == 0)
+			return (res);
+		res++;
+		s++;
+	}
+	return (-1);
+}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_string.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jleann <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/02 20:45:49 by jleann            #+#    #+#             */
-/*   Updated: 2019/04/17 20:07:53 by jleann           ###   ########.fr       */
+/*   Updated: 2019/09/09 19:52:37 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int						ft_isalpha(int c);
 int						ft_isascii(int c);
 int						ft_isdigit(int c);
 int						ft_isprint(int c);
+int						ft_isnumeric(char *str);
 void					*ft_memcpy(void *dst, const void *src, size_t n);
 void					*ft_memccpy(void *dst, const void *src, int c,
 									size_t n);
@@ -54,7 +55,7 @@ int						ft_atoi(const char *str);
 void					*ft_memalloc(size_t size);
 void					ft_memdel(void **ap);
 char					*ft_strnew(size_t size);
-void					ft_strdel(char **as);
+int						ft_strdel(char **as);
 void					ft_strclr(char *s);
 void					ft_striter(char *s, void (*f)(char *));
 void					ft_striteri(char *s,
@@ -73,6 +74,7 @@ char					*ft_itoa(int n);
 char					**ft_strsplit(char const *s, char c);
 char					*ft_lst_to_str(t_list *lst);
 char					*fill_with_chars(int num, char c);
+int						ft_strnchr(const char *s, char ch, int n);
 size_t					ft_calc_string_len(t_list *lst);
 
 #endif

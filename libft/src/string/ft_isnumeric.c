@@ -1,27 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   room_memory.c                                      :+:      :+:    :+:   */
+/*   ft_isnumeric.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/09 16:27:45 by cpollich          #+#    #+#             */
-/*   Updated: 2019/09/09 18:15:28 by cpollich         ###   ########.fr       */
+/*   Created: 2019/09/09 19:20:31 by cpollich          #+#    #+#             */
+/*   Updated: 2019/09/09 19:21:58 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lem_in.h"
-
-t_room	*create_room(size_t size)
+int	ft_isnumeric(char *str)
 {
-	t_room	*room;
+	int	i;
 
-	if (!(room = (t_room *)malloc(sizeof(t_room))))
-		return (NULL);
-	if (!(room->name = (char *)malloc(sizeof(char) * size)))
+	if (!str)
+		return (0);
+	i = 0;
+	if (str[0] == '+' || str[0] == '-')
+		i++;
+	if (str[i] == '\0')
+		return (0);
+	while (str[i])
 	{
-		free(room);
-		return (NULL);
+		if (!(str[i] >= '0' && str[i] <= '9'))
+			return (0);
+		i++;
 	}
-	return (room);
+	return (1);
 }
