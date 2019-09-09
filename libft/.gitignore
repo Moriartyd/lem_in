@@ -1,0 +1,9 @@
+*
+!.gitignore
+!Makefile
+!src/
+!src/*
+!src/*/*
+!include/
+!include/*
+!author
