@@ -6,7 +6,7 @@
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/09 21:02:33 by cpollich          #+#    #+#             */
-/*   Updated: 2019/09/09 23:13:29 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/09/10 21:37:32 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void		sort_nodes(t_rooms *head)
 	t_room	*tmp;
 	t_rooms	*right;
 	size_t	size;
+	int		res;
 
 	left = head;
 	right = head->next;
@@ -26,7 +27,7 @@ void		sort_nodes(t_rooms *head)
 	{
 		while (right)
 		{
-			if (ft_strcmp(left->room->name, right->room->name) < 0)
+			if ((res = ft_strcmp(left->room->name, right->room->name)) > 0)
 			{
 				tmp = left->room;
 				left->room = right->room;
@@ -35,7 +36,7 @@ void		sort_nodes(t_rooms *head)
 			right = right->next;
 		}
 		left = left->next;
-		right = right->next;
+		right = left->next;
 	}
 }
 
@@ -48,3 +49,7 @@ void		print_nodes(t_rooms *head)
 	}
 }
 
+t_rooms	*find_room(const char *str, t_rooms *lst)
+{
+	
+}

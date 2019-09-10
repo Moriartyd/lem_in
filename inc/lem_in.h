@@ -6,7 +6,7 @@
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/09 14:44:25 by cpollich          #+#    #+#             */
-/*   Updated: 2019/09/09 22:07:59 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/09/10 21:37:20 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ typedef struct		s_lemin
 	t_room			*start;
 	t_rooms			*list;
 	t_room			*end;
+	size_t			size;
 }					t_lemin;
 
 int				parse_input(t_lemin *lem, char *name);

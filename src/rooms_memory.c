@@ -6,7 +6,7 @@
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/09 18:15:11 by cpollich          #+#    #+#             */
-/*   Updated: 2019/09/09 23:09:01 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/09/10 21:19:12 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ t_rooms	*add_rooms(t_rooms *src, t_room *room)
 	new->room = room;
 	new->prev = src;
 	new->next = NULL;
+	src->next = new;
 	src = src->next;
 	return (new);
 }
