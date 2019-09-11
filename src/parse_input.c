@@ -6,13 +6,13 @@
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/09 15:18:04 by cpollich          #+#    #+#             */
-/*   Updated: 2019/09/09 23:08:42 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/09/11 22:34:02 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-int		get_type(char *str)
+int				get_type(char *str)
 {
 	if (str[0] == '#' && str[1] == '#' && !ft_strcmp(str + 2, "start"))
 		return (1);
@@ -29,18 +29,19 @@ int		get_type(char *str)
 	return (5);
 }
 
-static t_room	*parse_room(char *line, t_lemin *lem, int *status)
+static t_room	*parse_room(char *line, t_lemin *lem, int *status, int *ind)
 {
 	t_room	*room;
 	size_t	size;
 
 	size = ft_strchr(line, ' ') - line;
-	if (!(room = create_room(size)))
+	if (!(room = create_room(size, *ind)))
 		return (NULL);
 	ft_strncpy(room->name, line, size);
 	if (!(lem->list = add_rooms(lem->list, room)))
 		return (NULL);
 	*status = 4;
+	*ind = *ind + 1;
 	return (room);
 }
 
@@ -50,7 +51,7 @@ static void		parse_ants(char *line, t_lemin *lem, int *status)
 	*status = 4;
 }
 
-static int		parse_command(t_lemin *lem, int status, int fd)
+static int		parse_command(t_lemin *lem, int status, int fd, int *ind)
 {
 	char	*line;
 	int		s;
@@ -66,10 +67,10 @@ static int		parse_command(t_lemin *lem, int status, int fd)
 	if (s == 4)
 	{
 		if (status == 1 && !lem->start)
-			if (!(lem->start = parse_room(line, lem, &ret)))
+			if (!(lem->start = parse_room(line, lem, &ret, ind)))
 				return (-ft_strdel(&line));
 		if (status == 2 && !lem->end)
-			if (!(lem->end = parse_room(line, lem, &ret)))
+			if (!(lem->end = parse_room(line, lem, &ret, ind)))
 				return (-ft_strdel(&line));
 		ret = 5;
 	}
@@ -89,13 +90,14 @@ static int		parse_command(t_lemin *lem, int status, int fd)
 int				parse_input(t_lemin *lem, char *name)
 {
 	char	*line;
-	int		p[3];
+	int		p[4];
 	t_rooms	*r;
 
 	if (!lem || (p[0] = !name ? 0 : open(name, O_RDONLY)) < 0)
 		return (-1);
 	p[2] = 0;
 	p[1] = 0;
+	p[3] = 0;
 	while (ft_get_next_line(p[0], &line) > 0 && p[1] >= 0)
 	{
 		p[1] = get_type(line);
@@ -103,10 +105,10 @@ int				parse_input(t_lemin *lem, char *name)
 			|| (p[2] == 3 && p[1] == 4))
 			return (-ft_strdel(&line));
 		if (p[1] == 1 || p[1] == 2)
-			p[2] = parse_command(lem, p[1], p[0]);
+			p[2] = parse_command(lem, p[1], p[0], &p[3]);
 		else if (p[1] == 4 || p[1] == 5)
 			p[1] == 5 ? parse_ants(line, lem, &p[2]) :
-			parse_room(line, lem, &p[2]);
+			parse_room(line, lem, &p[2], &p[3]);
 		//p[1] == link ? parse_link : (0);
 		ft_strdel(&line);
 	}

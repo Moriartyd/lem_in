@@ -6,7 +6,7 @@
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/09 21:02:33 by cpollich          #+#    #+#             */
-/*   Updated: 2019/09/10 21:37:32 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/09/11 19:56:17 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,12 @@ void		print_nodes(t_rooms *head)
 {
 	while (head)
 	{
-		printf("%s\n", head->room->name);
+		printf("%s %i\n", head->room->name, head->room->index);
 		head = head->next;
 	}
 }
 
-t_rooms	*find_room(const char *str, t_rooms *lst)
-{
+// t_rooms	*find_room(const char *str, t_rooms *lst)
+// {
 	
-}
+// }

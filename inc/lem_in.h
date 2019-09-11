@@ -6,7 +6,7 @@
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/09 14:44:25 by cpollich          #+#    #+#             */
-/*   Updated: 2019/09/10 21:37:20 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/09/11 20:03:42 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 typedef struct		s_room
 {
 	char			*name;
+	int				index;
 	t_list			*link;
 }					t_room;
 
@@ -41,10 +42,10 @@ typedef struct		s_lemin
 	size_t			size;
 }					t_lemin;
 
-int				parse_input(t_lemin *lem, char *name);
-void		sort_nodes(t_rooms *head);
-void		print_nodes(t_rooms *head);
-t_rooms	*add_rooms(t_rooms *src, t_room *room);
-t_rooms	*init_rooms(void);
-t_room	*create_room(size_t size);
+int					parse_input(t_lemin *lem, char *name);
+void				sort_nodes(t_rooms *head);
+void				print_nodes(t_rooms *head);
+t_rooms				*add_rooms(t_rooms *src, t_room *room);
+t_rooms				*init_rooms(void);
+t_room				*create_room(size_t size, int ind);
 #endif
