@@ -6,7 +6,7 @@
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/09 18:15:11 by cpollich          #+#    #+#             */
-/*   Updated: 2019/09/10 21:19:12 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/09/13 17:45:28 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,12 @@ t_rooms	*add_rooms(t_rooms *src, t_room *room)
 {
 	t_rooms *new;
 
-	if (!src)
-		return (create_firstrooms(room));
 	if (!(new = (t_rooms *)malloc(sizeof(t_rooms))))
 		return (NULL);
 	new->room = room;
 	new->prev = src;
 	new->next = NULL;
 	src->next = new;
-	src = src->next;
 	return (new);
 }
 

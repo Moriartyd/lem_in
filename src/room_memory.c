@@ -6,13 +6,13 @@
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/09 16:27:45 by cpollich          #+#    #+#             */
-/*   Updated: 2019/09/11 20:06:14 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/09/13 18:29:09 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-t_room	*create_room(size_t size, int ind)
+t_room	*create_room(size_t size, int *ind)
 {
 	t_room	*room;
 
@@ -23,6 +23,7 @@ t_room	*create_room(size_t size, int ind)
 		free(room);
 		return (NULL);
 	}
-	room->index = ind;
+	room->index = *ind;
+	*ind = *ind + 1;
 	return (room);
 }

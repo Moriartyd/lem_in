@@ -6,7 +6,7 @@
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/09 15:18:04 by cpollich          #+#    #+#             */
-/*   Updated: 2019/09/11 22:34:02 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/09/13 18:30:44 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,15 +33,26 @@ static t_room	*parse_room(char *line, t_lemin *lem, int *status, int *ind)
 {
 	t_room	*room;
 	size_t	size;
+	t_rooms	*head;
 
 	size = ft_strchr(line, ' ') - line;
-	if (!(room = create_room(size, *ind)))
+	if (!(room = create_room(size, ind)))
 		return (NULL);
 	ft_strncpy(room->name, line, size);
-	if (!(lem->list = add_rooms(lem->list, room)))
+	if (!lem->list)
+	{
+		if (!(lem->list = create_firstrooms(room)))
+			return (NULL);
+		else
+			return (room);
+	}
+	head = lem->list;
+	while (head->next)
+		head = head->next;
+	if (!(head->next = add_rooms(head, room)))
 		return (NULL);
 	*status = 4;
-	*ind = *ind + 1;
+	lem->size = *ind;
 	return (room);
 }
 
@@ -55,7 +66,6 @@ static int		parse_command(t_lemin *lem, int status, int fd, int *ind)
 {
 	char	*line;
 	int		s;
-	t_room	*room;
 	int		ret;
 
 	ret = 5;
@@ -91,7 +101,6 @@ int				parse_input(t_lemin *lem, char *name)
 {
 	char	*line;
 	int		p[4];
-	t_rooms	*r;
 
 	if (!lem || (p[0] = !name ? 0 : open(name, O_RDONLY)) < 0)
 		return (-1);
@@ -109,9 +118,10 @@ int				parse_input(t_lemin *lem, char *name)
 		else if (p[1] == 4 || p[1] == 5)
 			p[1] == 5 ? parse_ants(line, lem, &p[2]) :
 			parse_room(line, lem, &p[2], &p[3]);
-		//p[1] == link ? parse_link : (0);
+		p[1] == 3 ? parse_link(line, lem, &p[2]) : (0);
 		ft_strdel(&line);
 	}
+	ft_strdel(&line);
 	close(p[0]);
 	return (0);
 }
