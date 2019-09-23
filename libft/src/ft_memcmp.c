@@ -1,40 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/09 21:59:53 by cpollich          #+#    #+#             */
-/*   Updated: 2019/09/23 16:57:57 by cpollich         ###   ########.fr       */
+/*   Created: 2018/12/10 14:55:06 by cpollich          #+#    #+#             */
+/*   Updated: 2019/05/16 20:56:37 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lem_in.h"
-#include <stdio.h>
-#include <errno.h>
+#include "libft.h"
 
-int	main(int argc, char **argv)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	t_lemin		*lem;
-
-	lem = (t_lemin *)ft_memalloc(sizeof(t_lemin));
-	argc = 0;
-	if (parse_input(lem, argv[1]) == -1)
-	{
-		perror(argv[0]);
-		return (1);
-	}
-	else
-	{
-		print_nodes(lem->list);
-		printf("\n");
-		for (int i = 0; i < lem->size;i++)
-		{
-			for (int j = 0; j < lem->size; j++)
-				printf("%i ", lem->smezh[i][j]);
-			printf("\n");
-		}
+	if (!n)
 		return (0);
+	while (n && *(unsigned char*)s1 == *(unsigned char*)s2)
+	{
+		n--;
+		s1++;
+		s2++;
 	}
+	if (n)
+		return (*(unsigned char*)s1 - *(unsigned char*)s2);
+	else
+		return (0);
 }

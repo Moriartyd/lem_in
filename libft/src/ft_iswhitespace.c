@@ -1,40 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_iswhitespace.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/09 21:59:53 by cpollich          #+#    #+#             */
-/*   Updated: 2019/09/23 16:57:57 by cpollich         ###   ########.fr       */
+/*   Created: 2019/04/16 16:00:47 by cpollich          #+#    #+#             */
+/*   Updated: 2019/04/16 16:02:48 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lem_in.h"
-#include <stdio.h>
-#include <errno.h>
-
-int	main(int argc, char **argv)
+int	ft_iswhitespace(char c)
 {
-	t_lemin		*lem;
-
-	lem = (t_lemin *)ft_memalloc(sizeof(t_lemin));
-	argc = 0;
-	if (parse_input(lem, argv[1]) == -1)
-	{
-		perror(argv[0]);
+	if (c == '\v' || c == '\t' || c == '\n' || c == '\f'
+	|| c == '\r' || c == ' ')
 		return (1);
-	}
 	else
-	{
-		print_nodes(lem->list);
-		printf("\n");
-		for (int i = 0; i < lem->size;i++)
-		{
-			for (int j = 0; j < lem->size; j++)
-				printf("%i ", lem->smezh[i][j]);
-			printf("\n");
-		}
 		return (0);
-	}
 }

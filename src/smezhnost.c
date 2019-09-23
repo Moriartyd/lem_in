@@ -6,13 +6,13 @@
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/13 15:01:04 by cpollich          #+#    #+#             */
-/*   Updated: 2019/09/13 18:32:30 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/09/23 16:45:21 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-int	**create_smezh(t_lemin *lem)
+int		**create_smezh(t_lemin *lem)
 {
 	int	i;
 	int	j;
@@ -56,7 +56,6 @@ void	add_smezh(char *name1, char *name2, t_lemin *lem)
 
 void	parse_link(char *str, t_lemin *lem, int *stat)
 {
-
 	char	**arr;
 
 	sort_nodes(lem->list);

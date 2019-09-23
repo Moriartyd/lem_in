@@ -6,7 +6,7 @@
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/09 15:18:04 by cpollich          #+#    #+#             */
-/*   Updated: 2019/09/13 18:30:44 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/09/23 17:18:50 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ static int		parse_command(t_lemin *lem, int status, int fd, int *ind)
 	int		ret;
 
 	ret = 5;
-	if (ft_get_next_line(fd, &line) < 0)
+	if (ft_gnl(fd, &line) < 0)
 		return (-ft_strdel(&line));
 	s = get_type(line);
 	if (s != 4)
@@ -107,7 +107,7 @@ int				parse_input(t_lemin *lem, char *name)
 	p[2] = 0;
 	p[1] = 0;
 	p[3] = 0;
-	while (ft_get_next_line(p[0], &line) > 0 && p[1] >= 0)
+	while (ft_gnl(p[0], &line) > 0 && p[1] >= 0)
 	{
 		p[1] = get_type(line);
 		if (p[1] == -1 || ((p[2] == 1 || p[2] == 2) && p[1] != 4)

@@ -6,7 +6,7 @@
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/09 21:02:33 by cpollich          #+#    #+#             */
-/*   Updated: 2019/09/13 18:32:49 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/09/23 16:45:09 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void		print_nodes(t_rooms *head)
 
 t_rooms		*find_room(const char *name, t_lemin *lem)
 {
-	size_t	left; 
+	size_t	left;
 	size_t	right;
 	size_t	mid;
 	size_t	i;

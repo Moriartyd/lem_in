@@ -1,40 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strequ.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/09 21:59:53 by cpollich          #+#    #+#             */
-/*   Updated: 2019/09/23 16:57:57 by cpollich         ###   ########.fr       */
+/*   Created: 2019/01/17 18:25:22 by cpollich          #+#    #+#             */
+/*   Updated: 2019/05/16 20:58:08 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lem_in.h"
-#include <stdio.h>
-#include <errno.h>
+#include "libft.h"
 
-int	main(int argc, char **argv)
+int	ft_strequ(char const *s1, char const *s2)
 {
-	t_lemin		*lem;
-
-	lem = (t_lemin *)ft_memalloc(sizeof(t_lemin));
-	argc = 0;
-	if (parse_input(lem, argv[1]) == -1)
-	{
-		perror(argv[0]);
-		return (1);
-	}
-	else
-	{
-		print_nodes(lem->list);
-		printf("\n");
-		for (int i = 0; i < lem->size;i++)
-		{
-			for (int j = 0; j < lem->size; j++)
-				printf("%i ", lem->smezh[i][j]);
-			printf("\n");
-		}
+	if (s1 == NULL || s2 == NULL)
 		return (0);
+	while (*s1 && *s2)
+	{
+		if (*s1 != *s2)
+			return (0);
+		s1++;
+		s2++;
 	}
+	if (*s1 != *s2)
+		return (0);
+	else
+		return (1);
 }

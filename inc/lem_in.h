@@ -6,7 +6,7 @@
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/09 14:44:25 by cpollich          #+#    #+#             */
-/*   Updated: 2019/09/13 18:31:48 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/09/23 16:52:06 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,15 @@
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <fcntl.h>
+#include <errno.h>
 
-# include "libft.h"
+# include "../libft/inc/libft.h"
 
 typedef struct		s_room
 {
 	char			*name;
 	int				index;
-	t_list			*link;
+	// t_list			*link;
 }					t_room;
 
 typedef struct		s_rooms
