@@ -6,7 +6,7 @@
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/09 18:15:11 by cpollich          #+#    #+#             */
-/*   Updated: 2019/09/23 21:04:07 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/09/23 22:15:56 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ t_rooms	*rm_rooms(t_rooms *head)
 
 	while (head)
 	{
-		if (head->room->name)
 		next = head->next;
 		head->room = rm_room(head->room);
 		head->prev = NULL;

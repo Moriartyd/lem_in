@@ -6,7 +6,7 @@
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/09 14:44:25 by cpollich          #+#    #+#             */
-/*   Updated: 2019/09/23 19:22:19 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/09/23 22:35:22 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <fcntl.h>
-#include <errno.h>
+# include <errno.h>
 
 # include "../libft/inc/libft.h"
 
@@ -26,7 +26,6 @@ typedef struct		s_room
 	int				index;
 	int				visit;
 	int				level;
-	// t_list			*link;
 }					t_room;
 
 typedef struct		s_rooms
@@ -47,8 +46,8 @@ typedef struct		s_lemin
 }					t_lemin;
 
 int					parse_input(t_lemin *lem, char *name);
-int					what_parse(char *line, t_lemin *lem, int *p, char *addline);
-// int					get_type(char *str);
+int					what_parse(char *line, t_lemin *lem,
+						int *p, char **addline);
 void				sort_nodes(t_rooms *head);
 void				print_nodes(t_rooms *head);
 t_rooms				*add_rooms(t_rooms *src, t_room *room);
@@ -57,7 +56,8 @@ t_rooms				*create_firstrooms(t_room *room);
 t_room				*create_room(size_t size, int *ind);
 t_rooms				*find_room(const char *name, t_lemin *lem);
 void				parse_link(char *str, t_lemin *lem, int *stat);
-t_room	*rm_room(t_room *room);
-t_rooms	*rm_rooms(t_rooms *head);
-void	mem_clean(t_lemin *lem);
+t_room				*rm_room(t_room *room);
+t_rooms				*rm_rooms(t_rooms *head);
+void				mem_clean(t_lemin *lem);
+int					check_startend(t_lemin *lem);
 #endif

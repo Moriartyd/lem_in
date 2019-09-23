@@ -6,7 +6,7 @@
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/09 15:18:04 by cpollich          #+#    #+#             */
-/*   Updated: 2019/09/23 20:59:20 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/09/23 22:09:30 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ static void		parse_ants(char *line, t_lemin *lem, int *status)
 	*status = 4;
 }
 
-static int		parse_command(t_lemin *lem, int *p, char *addline)
+static int		parse_command(t_lemin *lem, int *p, char **addline)
 {
 	char	*line;
 	int		s;
@@ -83,23 +83,33 @@ static int		parse_command(t_lemin *lem, int *p, char *addline)
 			if (!(lem->end = parse_room(line, lem, &ret, &p[3])))
 				return (-ft_strdel(&line));
 		ret = 5;
-		// addline = ft_strjoin(addline, ft_strjoinch(&line, '\n'));
-		// free(addline);
+		line = ft_strjoinch(&line, '\n');
+		*addline = ft_stradd(*addline, line);
 	}
 	return (-ft_strdel(&line) + ret);
 }
 
-int	what_parse(char *line, t_lemin *lem, int *p, char *addline)
+int				what_parse(char *line, t_lemin *lem, int *p, char **addline)
 {
 	p[1] = get_type(line);
 	if (p[1] == -1 || ((p[2] == 1 || p[2] == 2) && p[1] != 4)
 		|| (p[2] == 3 && p[1] == 4))
 		return (-ft_strdel(&line));
 	if (p[1] == 1 || p[1] == 2)
+	{
+		line = ft_strjoinch(&line, '\n');
+		*addline = ft_stradd(*addline, line);
 		p[2] = parse_command(lem, p, addline);
+	}
 	else if (p[1] == 4 || p[1] == 5)
 		p[1] == 5 ? parse_ants(line, lem, &p[2]) :
 		parse_room(line, lem, &p[2], &p[3]);
 	p[1] == 3 ? parse_link(line, lem, &p[2]) : (0);
-	return (0);
+	if (p[1] != 1 && p[1] != 2)
+	{
+		line = ft_strjoinch(&line, '\n');
+		*addline = ft_stradd(*addline, line);
+	}
+	ft_strdel(&line);
+	return (p[2] == -1 ? (-1) : (0));
 }

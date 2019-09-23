@@ -6,13 +6,13 @@
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/13 15:01:04 by cpollich          #+#    #+#             */
-/*   Updated: 2019/09/23 20:21:14 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/09/23 22:14:01 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-int		**create_smezh(t_lemin *lem)
+int			**create_smezh(t_lemin *lem)
 {
 	int	i;
 	int	j;
@@ -41,24 +41,32 @@ int		**create_smezh(t_lemin *lem)
 **	Дополнение таблицы смежности
 */
 
-void	add_smezh(char *name1, char *name2, t_lemin *lem)
+static int	add_smezh(char *name1, char *name2, t_lemin *lem)
 {
-	int	**arr;
-	int	ind1;
-	int	ind2;
+	int		**arr;
+	int		ind1;
+	int		ind2;
+	t_rooms	*rooms1;
+	t_rooms	*rooms2;
 
 	if (!name1 || !name2)
-		return ;
+		return (-1);
 	arr = lem->smezh;
-	ind1 = find_room(name1, lem)->room->index;
-	ind2 = find_room(name2, lem)->room->index;
+	rooms1 = find_room(name1, lem);
+	rooms2 = find_room(name2, lem);
+	if (!rooms1 || !rooms2)
+		return (-1);
+	ind1 = rooms1->room->index;
+	ind2 = rooms2->room->index;
 	arr[ind1][ind2] = 1;
 	arr[ind2][ind1] = 1;
+	return (0);
 }
 
-void	parse_link(char *str, t_lemin *lem, int *stat)
+void		parse_link(char *str, t_lemin *lem, int *stat)
 {
 	char	**arr;
+	int		res;
 
 	sort_nodes(lem->list);
 	if (!(arr = ft_strsplit(str, '-')))
@@ -67,7 +75,7 @@ void	parse_link(char *str, t_lemin *lem, int *stat)
 		lem->smezh = create_smezh(lem);
 	if (!lem->smezh)
 		*stat = -1;
-	add_smezh(arr[0], arr[1], lem);
+	res = add_smezh(arr[0], arr[1], lem);
 	ft_doublestrdel(&arr);
-	*stat = 3;
+	*stat = (!res) ? (3) : (-1);
 }

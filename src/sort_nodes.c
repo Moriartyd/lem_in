@@ -6,7 +6,7 @@
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/09 21:02:33 by cpollich          #+#    #+#             */
-/*   Updated: 2019/09/23 19:34:16 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/09/23 22:39:54 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,36 +71,38 @@ t_rooms		*find_room(const char *name, t_lemin *lem)
 	return (NULL);
 }
 
-// t_rooms		*find_room(const char *name, t_lemin *lem)
-// {
-// 	size_t	left;
-// 	size_t	right;
-// 	size_t	mid;
-// 	size_t	i;
-// 	t_rooms	*rooms;
-
-// 	left = 0;
-// 	right = lem->size + 1;
-// 	rooms = lem->list;
-// 	while (left < right)
-// 	{
-// 		mid = left + (right - left) / 2;
-// 		i = left;
-// 		while (i < mid)
-// 		{
-// 			rooms = rooms->next;
-// 			i++;
-// 		}
-// 		if (ft_strcmp(rooms->room->name, name) > 0)
-// 		{
-// 			right = mid;
-// 			while (i-- > left)
-// 				rooms = rooms->prev;
-// 		}
-// 		else if (ft_strcmp(rooms->room->name, name) < 0)
-// 			left = mid;
-// 		else
-// 			return (rooms);
-// 	}
-// 	return (NULL);
-// }
+/*
+**	t_rooms		*find_room(const char *name, t_lemin *lem)
+**	{
+**		size_t	left;
+**		size_t	right;
+**		size_t	mid;
+**		size_t	i;
+**		t_rooms	*rooms;
+**
+**		left = 0;
+**		right = lem->size + 1;
+**		rooms = lem->list;
+**		while (left < right)
+**		{
+**			mid = left + (right - left) / 2;
+**			i = left;
+**			while (i < mid)
+**			{
+**				rooms = rooms->next;
+**				i++;
+**			}
+**			if (ft_strcmp(rooms->room->name, name) > 0)
+**			{
+**				right = mid;
+**				while (i-- > left)
+**					rooms = rooms->prev;
+**			}
+**			else if (ft_strcmp(rooms->room->name, name) < 0)
+**				left = mid;
+**			else
+**				return (rooms);
+**		}
+**		return (NULL);
+**	}
+*/

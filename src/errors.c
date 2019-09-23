@@ -1,40 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   errors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/09 21:59:53 by cpollich          #+#    #+#             */
-/*   Updated: 2019/09/23 22:40:27 by cpollich         ###   ########.fr       */
+/*   Created: 2019/09/23 22:26:09 by cpollich          #+#    #+#             */
+/*   Updated: 2019/09/23 22:30:37 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
-#include <stdio.h>
-#include <errno.h>
 
-int	main(int argc, char **argv)
+int	check_startend(t_lemin *lem)
 {
-	t_lemin		*lem;
+	int	i;
+	int	sum;
 
-	lem = (t_lemin *)ft_memalloc(sizeof(t_lemin));
-	argc = 0;
-	if (parse_input(lem, argv[1]) == -1)
+	i = 0;
+	sum = 0;
+	while (i < lem->size)
 	{
-		perror(argv[0]);
-		mem_clean(lem);
-		return (1);
+		sum += lem->smezh[lem->start->index][i];
+		i++;
 	}
-	else
+	if (!sum)
+		return (-1);
+	i = 0;
+	sum = 0;
+	while (i < lem->size)
 	{
-		if (check_startend(lem) == -1)
-		{
-			perror(argv[0]);
-			mem_clean(lem);
-			return (1);
-		}
-		mem_clean(lem);
-		return (0);
+		sum += lem->smezh[lem->end->index][i];
+		i++;
 	}
+	if (!sum)
+		return (-1);
+	return (0);
 }
