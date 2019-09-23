@@ -6,7 +6,7 @@
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/09 18:15:11 by cpollich          #+#    #+#             */
-/*   Updated: 2019/09/13 17:45:28 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/09/23 18:52:50 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,4 +47,20 @@ t_rooms	*init_rooms(void)
 	res->prev = NULL;
 	res->room = NULL;
 	return (res);
+}
+
+t_rooms	*rm_rooms(t_rooms *head)
+{
+	t_rooms	*next;
+
+	while (head)
+	{
+		next = head->next;
+		head->room = rm_room(head->room);
+		head->prev = NULL;
+		head->next = NULL;
+		free(head);
+		head = next;
+	}
+	return (head);
 }

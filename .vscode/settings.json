@@ -3,6 +3,7 @@
         "libft.h": "c",
         "ft_list.h": "c",
         "ft_string.h": "c",
-        "stdlib.h": "c"
+        "stdlib.h": "c",
+        "lem_in.h": "c"
     }
 }

@@ -9,7 +9,7 @@
             "type": "cppdbg",
             "request": "launch",
             "program": "${workspaceFolder}/test",
-            "args": ["map2"],
+            "args": ["map"],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
             "environment": [],

@@ -6,7 +6,7 @@
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/09 14:44:25 by cpollich          #+#    #+#             */
-/*   Updated: 2019/09/23 16:52:06 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/09/23 18:52:56 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,16 @@ typedef struct		s_lemin
 }					t_lemin;
 
 int					parse_input(t_lemin *lem, char *name);
+int					what_parse(char *line, t_lemin *lem, int *p, char *addline);
+// int					get_type(char *str);
 void				sort_nodes(t_rooms *head);
 void				print_nodes(t_rooms *head);
 t_rooms				*add_rooms(t_rooms *src, t_room *room);
 t_rooms				*init_rooms(void);
-t_rooms	*create_firstrooms(t_room *room);
+t_rooms				*create_firstrooms(t_room *room);
 t_room				*create_room(size_t size, int *ind);
 t_rooms				*find_room(const char *name, t_lemin *lem);
-void	parse_link(char *str, t_lemin *lem, int *stat);
+void				parse_link(char *str, t_lemin *lem, int *stat);
+t_room	*rm_room(t_room *room);
+t_rooms	*rm_rooms(t_rooms *head);
 #endif

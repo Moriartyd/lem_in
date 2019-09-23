@@ -6,13 +6,13 @@
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/09 15:18:04 by cpollich          #+#    #+#             */
-/*   Updated: 2019/09/23 17:18:50 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/09/23 18:01:01 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-int				get_type(char *str)
+static int		get_type(char *str)
 {
 	if (str[0] == '#' && str[1] == '#' && !ft_strcmp(str + 2, "start"))
 		return (1);
@@ -62,66 +62,43 @@ static void		parse_ants(char *line, t_lemin *lem, int *status)
 	*status = 4;
 }
 
-static int		parse_command(t_lemin *lem, int status, int fd, int *ind)
+static int		parse_command(t_lemin *lem, int *p, char *addline) //int status, int fd, int *ind)
 {
 	char	*line;
 	int		s;
 	int		ret;
 
 	ret = 5;
-	if (ft_gnl(fd, &line) < 0)
+	if (ft_gnl(p[0], &line) < 0)
 		return (-ft_strdel(&line));
 	s = get_type(line);
 	if (s != 4)
 		return (-ft_strdel(&line));
 	if (s == 4)
 	{
-		if (status == 1 && !lem->start)
-			if (!(lem->start = parse_room(line, lem, &ret, ind)))
+		if (p[1] == 1 && !lem->start)
+			if (!(lem->start = parse_room(line, lem, &ret, &p[3])))
 				return (-ft_strdel(&line));
-		if (status == 2 && !lem->end)
-			if (!(lem->end = parse_room(line, lem, &ret, ind)))
+		if (p[1] == 2 && !lem->end)
+			if (!(lem->end = parse_room(line, lem, &ret, &p[3])))
 				return (-ft_strdel(&line));
 		ret = 5;
+		addline = ft_strjoin(addline, ft_strjoinch(&line, '\n'));
 	}
 	return (-ft_strdel(&line) + ret);
 }
 
-/*
-**	1	- start
-** 	2	- end
-** 	3	- link
-**	4	- room
-**	5	- ants
-**	-1	- error
-**	0	- comment
-*/
-
-int				parse_input(t_lemin *lem, char *name)
+int	what_parse(char *line, t_lemin *lem, int *p, char *addline)
 {
-	char	*line;
-	int		p[4];
-
-	if (!lem || (p[0] = !name ? 0 : open(name, O_RDONLY)) < 0)
-		return (-1);
-	p[2] = 0;
-	p[1] = 0;
-	p[3] = 0;
-	while (ft_gnl(p[0], &line) > 0 && p[1] >= 0)
-	{
-		p[1] = get_type(line);
-		if (p[1] == -1 || ((p[2] == 1 || p[2] == 2) && p[1] != 4)
-			|| (p[2] == 3 && p[1] == 4))
-			return (-ft_strdel(&line));
-		if (p[1] == 1 || p[1] == 2)
-			p[2] = parse_command(lem, p[1], p[0], &p[3]);
-		else if (p[1] == 4 || p[1] == 5)
-			p[1] == 5 ? parse_ants(line, lem, &p[2]) :
-			parse_room(line, lem, &p[2], &p[3]);
-		p[1] == 3 ? parse_link(line, lem, &p[2]) : (0);
-		ft_strdel(&line);
-	}
-	ft_strdel(&line);
-	close(p[0]);
+	p[1] = get_type(line);
+	if (p[1] == -1 || ((p[2] == 1 || p[2] == 2) && p[1] != 4)
+		|| (p[2] == 3 && p[1] == 4))
+		return (-ft_strdel(&line));
+	if (p[1] == 1 || p[1] == 2)
+		p[2] = parse_command(lem, p, addline);
+	else if (p[1] == 4 || p[1] == 5)
+		p[1] == 5 ? parse_ants(line, lem, &p[2]) :
+		parse_room(line, lem, &p[2], &p[3]);
+	p[1] == 3 ? parse_link(line, lem, &p[2]) : (0);
 	return (0);
 }

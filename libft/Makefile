@@ -6,7 +6,7 @@
 #    By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/01 14:33:12 by cpollich          #+#    #+#              #
-#    Updated: 2019/09/23 16:42:12 by cpollich         ###   ########.fr        #
+#    Updated: 2019/09/23 17:49:31 by cpollich         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,7 +60,8 @@ SRC = 	ft_memset.c\
 		ft_strshift.c get_next_line.c\
 		ft_wordcount.c ft_lstclr.c ft_copyuntil.c\
 		ft_doublestrdel.c\
-		ft_swap.c ft_strnchr.c ft_isnumeric.c
+		ft_swap.c ft_strnchr.c ft_isnumeric.c\
+		ft_strjoinch.c
 
 SRCS	= $(addprefix $(SRC_DIR)/,$(SRC))
 OBJS	= $(addprefix $(OBJ_DIR)/,$(SRC:%.c=%.o))

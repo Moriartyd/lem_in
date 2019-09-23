@@ -6,7 +6,7 @@
 #    By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/09 13:09:12 by cpollich          #+#    #+#              #
-#    Updated: 2019/09/23 16:56:42 by cpollich         ###   ########.fr        #
+#    Updated: 2019/09/23 17:39:16 by cpollich         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,4 +39,4 @@ fclean: clean
 re: fclean all
 
 test: $(LIBFT) $(SRC_DIR)/*.c main.c
-	gcc -g main.c src/* -I./inc -I./libft/ libft/libft.a -o test
+	gcc -g $F main.c src/* -I./inc -I./libft/ libft/libft.a -o test

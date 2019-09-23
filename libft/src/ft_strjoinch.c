@@ -1,40 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   room_memory.c                                      :+:      :+:    :+:   */
+/*   ft_strjoinch.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/09 16:27:45 by cpollich          #+#    #+#             */
-/*   Updated: 2019/09/23 18:49:47 by cpollich         ###   ########.fr       */
+/*   Created: 2019/09/23 17:48:24 by cpollich          #+#    #+#             */
+/*   Updated: 2019/09/23 17:48:36 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lem_in.h"
+#include "libft.h"
 
-t_room	*create_room(size_t size, int *ind)
+char	*ft_strjoinch(char **str, char c)
 {
-	t_room	*room;
+	char	*res;
 
-	if (!(room = (t_room *)malloc(sizeof(t_room))))
+	if (!str || !(*str))
 		return (NULL);
-	if (!(room->name = (char *)malloc(sizeof(char) * size)))
-	{
-		free(room);
+	res = ft_strnew(ft_strlen(*str) + 1);
+	if (!res)
 		return (NULL);
-	}
-	room->index = *ind;
-	*ind = *ind + 1;
-	return (room);
-}
-
-t_room	*rm_room(t_room *room)
-{
-	if (!room)
-		return (NULL);
-	ft_strdel(&(room->name));
-	room->index = 0;
-	free(room);
-	room = NULL;
-	return (room);
+	res = ft_strcpy(res, *str);
+	res = ft_strncat(res, &c, 1);
+	free(*str);
+	*str = NULL;
+	return (res);
 }

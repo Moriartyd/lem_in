@@ -6,7 +6,7 @@
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 17:20:52 by cpollich          #+#    #+#             */
-/*   Updated: 2019/09/23 16:41:15 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/09/23 17:48:56 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,5 +119,6 @@ int					ft_doublestrdel(char ***matrix);
 void				ft_swap(int *a, int *b);
 int					ft_isnumeric(char *str);
 int					ft_strnchr(const char *s, char ch, int n);
+char				*ft_strjoinch(char **str, char c);
 
 #	endif
