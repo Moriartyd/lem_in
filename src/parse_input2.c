@@ -6,7 +6,7 @@
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/23 17:27:54 by cpollich          #+#    #+#             */
-/*   Updated: 2019/09/23 18:41:18 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/09/23 21:04:34 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,12 @@ int				parse_input(t_lemin *lem, char *name)
 		if (ret == -1)
 			return (-1);
 		line = ft_strjoinch(&line, '\n');
-		output = ft_strjoin(output, line);
+		output = ft_stradd(output, line);
 		ft_strdel(&line);
 	}
 	ft_strdel(&line);
 	close(p[0]);
 	ft_putstr(output);
+	ft_strdel(&output);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/09 15:18:04 by cpollich          #+#    #+#             */
-/*   Updated: 2019/09/23 18:01:01 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/09/23 20:59:20 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ static void		parse_ants(char *line, t_lemin *lem, int *status)
 	*status = 4;
 }
 
-static int		parse_command(t_lemin *lem, int *p, char *addline) //int status, int fd, int *ind)
+static int		parse_command(t_lemin *lem, int *p, char *addline)
 {
 	char	*line;
 	int		s;
@@ -83,7 +83,8 @@ static int		parse_command(t_lemin *lem, int *p, char *addline) //int status, int
 			if (!(lem->end = parse_room(line, lem, &ret, &p[3])))
 				return (-ft_strdel(&line));
 		ret = 5;
-		addline = ft_strjoin(addline, ft_strjoinch(&line, '\n'));
+		// addline = ft_strjoin(addline, ft_strjoinch(&line, '\n'));
+		// free(addline);
 	}
 	return (-ft_strdel(&line) + ret);
 }

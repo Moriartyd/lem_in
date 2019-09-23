@@ -6,7 +6,7 @@
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/09 21:59:53 by cpollich          #+#    #+#             */
-/*   Updated: 2019/09/23 17:58:03 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/09/23 20:07:06 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,12 @@ int	main(int argc, char **argv)
 	if (parse_input(lem, argv[1]) == -1)
 	{
 		perror(argv[0]);
+		mem_clean(lem);
 		return (1);
 	}
 	else
 	{
+		mem_clean(lem);
 		// print_nodes(lem->list);
 		// printf("\n");
 		// for (int i = 0; i < lem->size;i++)

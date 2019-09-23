@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_stradd.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/05 00:20:54 by moriarty          #+#    #+#             */
-/*   Updated: 2019/09/23 20:55:21 by cpollich         ###   ########.fr       */
+/*   Created: 2019/09/23 21:01:29 by cpollich          #+#    #+#             */
+/*   Updated: 2019/09/23 21:09:34 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_stradd(char *s1, char *s2)
 {
 	char	*str;
 
@@ -22,6 +22,8 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	if (!str)
 		return (NULL);
 	str = ft_strcpy(str, s1);
+	if (*s1)
+		ft_strdel(&s1);
 	str = ft_strcat(str, s2);
 	return (str);
 }

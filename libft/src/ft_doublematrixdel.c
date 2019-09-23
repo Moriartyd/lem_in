@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_doublematrixdel.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/05 00:20:54 by moriarty          #+#    #+#             */
-/*   Updated: 2019/09/23 20:55:21 by cpollich         ###   ########.fr       */
+/*   Created: 2019/09/23 19:19:17 by cpollich          #+#    #+#             */
+/*   Updated: 2019/09/23 20:08:44 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+int	ft_doublematrixdel(int ***matrix, int size)
 {
-	char	*str;
+	int i;
 
-	if (s1 == NULL || s2 == NULL)
-		return (NULL);
-	str = ft_strnew(ft_strlen(s1) + ft_strlen(s2) + 1);
-	if (!str)
-		return (NULL);
-	str = ft_strcpy(str, s1);
-	str = ft_strcat(str, s2);
-	return (str);
+	i = -1;
+	if (!matrix || !*matrix)
+		return (0);
+	while (++i < size)
+		free((*matrix)[i]);
+	free(*matrix);
+	*matrix = NULL;
+	return (0);
 }

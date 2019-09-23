@@ -6,7 +6,7 @@
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/13 15:01:04 by cpollich          #+#    #+#             */
-/*   Updated: 2019/09/23 16:45:21 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/09/23 20:21:14 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ void	add_smezh(char *name1, char *name2, t_lemin *lem)
 	int	ind1;
 	int	ind2;
 
+	if (!name1 || !name2)
+		return ;
 	arr = lem->smezh;
 	ind1 = find_room(name1, lem)->room->index;
 	ind2 = find_room(name2, lem)->room->index;
@@ -66,5 +68,6 @@ void	parse_link(char *str, t_lemin *lem, int *stat)
 	if (!lem->smezh)
 		*stat = -1;
 	add_smezh(arr[0], arr[1], lem);
+	ft_doublestrdel(&arr);
 	*stat = 3;
 }

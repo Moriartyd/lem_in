@@ -6,7 +6,7 @@
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/09 14:44:25 by cpollich          #+#    #+#             */
-/*   Updated: 2019/09/23 18:52:56 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/09/23 19:22:19 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ typedef struct		s_room
 {
 	char			*name;
 	int				index;
+	int				visit;
+	int				level;
 	// t_list			*link;
 }					t_room;
 
@@ -57,4 +59,5 @@ t_rooms				*find_room(const char *name, t_lemin *lem);
 void				parse_link(char *str, t_lemin *lem, int *stat);
 t_room	*rm_room(t_room *room);
 t_rooms	*rm_rooms(t_rooms *head);
+void	mem_clean(t_lemin *lem);
 #endif

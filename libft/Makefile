@@ -6,7 +6,7 @@
 #    By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/01 14:33:12 by cpollich          #+#    #+#              #
-#    Updated: 2019/09/23 17:49:31 by cpollich         ###   ########.fr        #
+#    Updated: 2019/09/23 21:08:13 by cpollich         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,7 +61,7 @@ SRC = 	ft_memset.c\
 		ft_wordcount.c ft_lstclr.c ft_copyuntil.c\
 		ft_doublestrdel.c\
 		ft_swap.c ft_strnchr.c ft_isnumeric.c\
-		ft_strjoinch.c
+		ft_strjoinch.c ft_doublematrixdel.c ft_stradd.c
 
 SRCS	= $(addprefix $(SRC_DIR)/,$(SRC))
 OBJS	= $(addprefix $(OBJ_DIR)/,$(SRC:%.c=%.o))
@@ -79,7 +79,7 @@ $(NAME): $(OBJ_DIR) $(OBJS) $(HEAD)
 	@echo "\033[1;32mlibft.a was built\033[0m"
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
-	@gcc $F -c $< -I$(INC_DIR) -o$@
+	@gcc $F -g -c $< -I$(INC_DIR) -o$@
 
 clean:
 	@rm -Rf $(OBJ_DIR)
