@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lem_in.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
+/*   By: adavis <adavis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/09 14:44:25 by cpollich          #+#    #+#             */
-/*   Updated: 2019/09/23 22:35:22 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/09/24 14:41:04 by adavis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,13 @@ typedef struct		s_lemin
 	int				**smezh;
 }					t_lemin;
 
+typedef struct		s_queue
+{
+	int				index;
+	struct s_queue	*next;
+}					t_queue;
+
+
 int					parse_input(t_lemin *lem, char *name);
 int					what_parse(char *line, t_lemin *lem,
 						int *p, char **addline);
@@ -60,4 +67,10 @@ t_room				*rm_room(t_room *room);
 t_rooms				*rm_rooms(t_rooms *head);
 void				mem_clean(t_lemin *lem);
 int					check_startend(t_lemin *lem);
+
+void				push_queue(t_queue **queue, int index);
+int					pop_queue(t_queue **queue);
+
+void				bfs(t_rooms *rooms, t_room *start);
+
 #endif
