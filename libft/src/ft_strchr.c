@@ -5,19 +5,22 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/08 18:24:15 by cpollich          #+#    #+#             */
-/*   Updated: 2019/05/16 20:57:44 by cpollich         ###   ########.fr       */
+/*   Created: 2019/08/30 19:59:19 by cpollich          #+#    #+#             */
+/*   Updated: 2019/08/30 19:59:50 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strchr(const char *s, int c)
+char		*ft_strchr(const char *s, int c)
 {
-	while (*(unsigned char*)s != (unsigned char)c && *s)
-		s++;
-	if (*(unsigned char*)s != (unsigned char)c)
-		return (NULL);
-	else
-		return ((char*)s);
+	int i;
+
+	i = -1;
+	while (s[++i])
+		if (s[i] == c)
+			return ((char *)(s + i));
+	if (c == '\0')
+		return ((char *)(s + i));
+	return (NULL);
 }

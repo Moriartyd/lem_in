@@ -5,14 +5,15 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/30 18:47:40 by cpollich          #+#    #+#             */
-/*   Updated: 2019/05/16 20:56:57 by cpollich         ###   ########.fr       */
+/*   Created: 2019/05/15 22:22:28 by cpollich          #+#    #+#             */
+/*   Updated: 2019/05/16 18:32:47 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putchar(char c)
+int	ft_putchar(char c)
 {
 	write(1, &c, 1);
+	return (1);
 }

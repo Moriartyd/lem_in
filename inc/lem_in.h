@@ -6,7 +6,7 @@
 /*   By: adavis <adavis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/09 14:44:25 by cpollich          #+#    #+#             */
-/*   Updated: 2019/09/24 14:41:04 by adavis           ###   ########.fr       */
+/*   Updated: 2019/09/24 14:43:36 by adavis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 # include <errno.h>
 
 # include "../libft/inc/libft.h"
+# include "../libft/inc/ft_printf.h"
+
 
 typedef struct		s_room
 {

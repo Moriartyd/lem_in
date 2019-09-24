@@ -3,28 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   ft_copyuntil.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
+/*   By: amerlon- <amerlon-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/15 19:28:48 by cpollich          #+#    #+#             */
-/*   Updated: 2019/05/16 20:55:07 by cpollich         ###   ########.fr       */
+/*   Created: 2018/12/04 21:29:51 by amerlon-          #+#    #+#             */
+/*   Updated: 2018/12/04 21:39:28 by amerlon-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_copyuntil(const char *str, int c)
+char	*ft_copyuntil(char *str, int c)
 {
-	char *res;
-	char *sym;
+	char	*res;
+	char	*symb;
 
 	if (!str)
 		return (NULL);
-	sym = ft_strchr(str, c);
-	if (!sym)
+	symb = ft_strchr(str, c);
+	if (!symb)
 		return (NULL);
-	res = ft_strnew(sym - str);
+	res = ft_strnew(symb - str);
 	if (!res)
 		return (NULL);
-	res = ft_strncpy(res, str, sym - str);
+	res = ft_strncpy(res, str, symb - str);
 	return (res);
 }

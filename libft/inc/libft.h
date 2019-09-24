@@ -6,7 +6,7 @@
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 17:20:52 by cpollich          #+#    #+#             */
-/*   Updated: 2019/09/23 21:03:47 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/09/24 13:56:20 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,9 +72,9 @@ char				*ft_strsub(char const *s, unsigned int start, size_t len);
 char				*ft_strjoin(char const *s1, char const *s2);
 char				*ft_strtrim(char const *s);
 char				**ft_strsplit(char const *s, char c);
-void				ft_putchar(char c);
+int					ft_putchar(char c);
 void				ft_putchar_fd(char c, int fd);
-void				ft_putstr(char const *str);
+int					ft_putstr(char const *str);
 void				ft_putstr_fd(char const *str, int fd);
 void				ft_putendl(char const *s);
 void				ft_putendl_fd(char const *s, int fd);
@@ -122,5 +122,16 @@ int					ft_strnchr(const char *s, char ch, int n);
 char				*ft_strjoinch(char **str, char c);
 int					ft_doublematrixdel(int ***matrix, int size);
 char				*ft_stradd(char *s1, char *s2);
+
+int					ft_printf(const char *form, ...);
+char				*ft_copyuntil(char *str, int c);
+int					ft_isdigit(int c);
+char				*ft_strjoin_leak(char const *s1, char const *s2);
+char				*ft_nchjoinstr(char *str, char c, int n);
+char				*ft_chjoinstr(char c, char *str);
+char				*ft_strshift(char **str, size_t n);
+int					ft_putstr_until(const char *str, char c);
+char				*ft_ltoa_base(long long int n, int base);
+char				*ft_itoa_ubase(size_t num, int base);
 
 #	endif
