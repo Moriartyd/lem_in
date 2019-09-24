@@ -6,7 +6,7 @@
 /*   By: adavis <adavis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/09 21:59:53 by cpollich          #+#    #+#             */
-/*   Updated: 2019/09/24 14:43:01 by adavis           ###   ########.fr       */
+/*   Updated: 2019/09/24 15:02:11 by adavis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ int	main(int argc, char **argv)
 			mem_clean(lem);
 			return (1);
 		}
+		bfs(lem);
 		mem_clean(lem);
 		return (0);
 	}

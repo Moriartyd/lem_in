@@ -6,7 +6,7 @@
 /*   By: adavis <adavis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/09 14:44:25 by cpollich          #+#    #+#             */
-/*   Updated: 2019/09/24 14:43:36 by adavis           ###   ########.fr       */
+/*   Updated: 2019/09/24 15:00:52 by adavis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,6 @@ int					check_startend(t_lemin *lem);
 void				push_queue(t_queue **queue, int index);
 int					pop_queue(t_queue **queue);
 
-void				bfs(t_rooms *rooms, t_room *start);
+void				bfs(t_lemin *lem);
 
 #endif
