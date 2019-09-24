@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: adavis <adavis@student.42.fr>              +#+  +:+       +#+         #
+#    By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/09 13:09:12 by cpollich          #+#    #+#              #
-#    Updated: 2019/09/24 14:44:04 by adavis           ###   ########.fr        #
+#    Updated: 2019/09/24 15:09:59 by cpollich         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,9 +37,10 @@ $(OBJ_DIR):
 $(NAME): $(LIBFT) $(OBJ_DIR) $(OBJS) $(LEM_H)
 	@echo "\033[35mCompiling ./lem-in\033[0m"
 	@gcc $(LIBFT) $F $(OBJS) -o $(NAME)
+	@echo "\033[1;32m./lem-in was built\033[0m"
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
-	@gcc $(FLAGS) -c $< -I$(INC_DIR) -I$(LIBFT_DIR) -o $@
+	@gcc $(FLAGS) -c -g $< -I$(INC_DIR) -I$(LIBFT_DIR) -o $@
 
 $(LIBFT):
 	@make -C libft
