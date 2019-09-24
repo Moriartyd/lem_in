@@ -5,19 +5,19 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/20 18:17:12 by cpollich          #+#    #+#             */
-/*   Updated: 2019/05/16 20:58:40 by cpollich         ###   ########.fr       */
+/*   Created: 2019/05/15 22:25:41 by cpollich          #+#    #+#             */
+/*   Updated: 2019/05/31 14:48:00 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlen(const char *s)
+size_t	ft_strlen(const char *str)
 {
-	size_t len;
+	size_t i;
 
-	len = 0;
-	while (s[len])
-		len++;
-	return (len);
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
 }

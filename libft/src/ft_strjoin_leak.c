@@ -1,30 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_copyuntil.c                                     :+:      :+:    :+:   */
+/*   ft_strjoin_leak.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amerlon- <amerlon-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/04 21:29:51 by amerlon-          #+#    #+#             */
-/*   Updated: 2018/12/04 21:39:28 by amerlon-         ###   ########.fr       */
+/*   Created: 2019/07/20 20:47:50 by cpollich          #+#    #+#             */
+/*   Updated: 2019/07/24 18:29:10 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_copyuntil(char *str, int c)
+char	*ft_strjoin_leak(char const *s1, char const *s2)
 {
-	char	*res;
-	char	*symb;
+	char	*str;
 
+	if (s1 == NULL || s2 == NULL)
+		return (NULL);
+	str = ft_strnew(ft_strlen(s1) + ft_strlen(s2) + 1);
 	if (!str)
 		return (NULL);
-	symb = ft_strchr(str, c);
-	if (!symb)
-		return (NULL);
-	res = ft_strnew(symb - str);
-	if (!res)
-		return (NULL);
-	res = ft_strncpy(res, str, symb - str);
-	return (res);
+	str = ft_strcpy(str, s1);
+	str = ft_strcat(str, s2);
+	return (str);
 }

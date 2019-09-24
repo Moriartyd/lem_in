@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/28 19:09:45 by cpollich          #+#    #+#             */
-/*   Updated: 2019/05/16 20:58:04 by cpollich         ###   ########.fr       */
+/*   Created: 2019/07/24 18:28:04 by cpollich          #+#    #+#             */
+/*   Updated: 2019/09/03 15:42:25 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,18 @@ char	*ft_strdup(const char *s1)
 {
 	char	*s;
 	size_t	i;
+	size_t	len;
 
-	i = -1;
-	s = (char*)malloc(sizeof(char) * (ft_strlen(s1) + 1));
+	i = 0;
+	len = ft_strlen(s1);
+	s = (char*)malloc(sizeof(char) * (len + 1));
 	if (s == NULL)
 		return (NULL);
-	while (s1[++i])
+	s[len] = '\0';
+	while (i < len)
+	{
 		s[i] = s1[i];
-	s[i] = '\0';
+		i++;
+	}
 	return (s);
 }

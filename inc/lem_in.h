@@ -6,7 +6,7 @@
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/09 14:44:25 by cpollich          #+#    #+#             */
-/*   Updated: 2019/09/23 22:35:22 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/09/24 13:53:55 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 # include <errno.h>
 
 # include "../libft/inc/libft.h"
+# include "../libft/inc/ft_printf.h"
+
 
 typedef struct		s_room
 {

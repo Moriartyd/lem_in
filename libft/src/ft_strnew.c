@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/17 17:39:40 by cpollich          #+#    #+#             */
-/*   Updated: 2019/05/16 20:59:06 by cpollich         ###   ########.fr       */
+/*   Created: 2018/11/30 17:00:53 by jjory-ca          #+#    #+#             */
+/*   Updated: 2019/07/24 18:26:58 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,6 @@ char	*ft_strnew(size_t size)
 	array = ft_memalloc((size + 1) * sizeof(char));
 	if (!array)
 		return (NULL);
+	array[size] = 0;
 	return (array);
 }

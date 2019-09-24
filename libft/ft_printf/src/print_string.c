@@ -1,21 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*   print_string.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/04 19:01:19 by cpollich          #+#    #+#             */
-/*   Updated: 2019/06/04 19:09:35 by cpollich         ###   ########.fr       */
+/*   Created: 2019/05/20 16:09:34 by jjory-ca          #+#    #+#             */
+/*   Updated: 2019/09/03 19:10:29 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-int	ft_isdigit(int c)
+int	print_string(char *ap, t_token *token)
 {
-	if (c >= 48 && c <= 57)
-		return (1);
+	int	w;
+	int	p;
+
+	w = token->width;
+	p = token->precision;
+	if (!ap)
+	{
+		return (((token->flags & F_MINUS) != F_MINUS) ?
+			print_without_flag("(null)", w, p, ' ') :
+			print_with_flag("(null)", w, p, ' '));
+	}
+	if ((token->flags & F_MINUS) != F_MINUS)
+		return (print_without_flag(ap, w, p, ' '));
 	else
-		return (0);
+		return (print_with_flag(ap, w, p, ' '));
 }

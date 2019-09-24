@@ -5,14 +5,18 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/30 18:44:54 by cpollich          #+#    #+#             */
-/*   Updated: 2019/05/16 20:57:26 by cpollich         ###   ########.fr       */
+/*   Created: 2019/05/15 22:23:44 by cpollich          #+#    #+#             */
+/*   Updated: 2019/05/15 22:27:03 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putstr(char const *str)
+int	ft_putstr(const char *str)
 {
-	ft_putstr_fd(str, 1);
+	int len;
+
+	len = (int)ft_strlen(str);
+	write(1, str, len);
+	return (len);
 }

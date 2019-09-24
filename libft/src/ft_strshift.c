@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/15 19:32:52 by cpollich          #+#    #+#             */
-/*   Updated: 2019/05/16 20:59:16 by cpollich         ###   ########.fr       */
+/*   Created: 2019/08/30 20:04:55 by cpollich          #+#    #+#             */
+/*   Updated: 2019/08/30 20:05:09 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,14 @@
 
 char	*ft_strshift(char **str, size_t n)
 {
-	char *res;
+	char	*res;
 
-	if (!str || !*str)
+	if (!str || !(*str))
 		return (NULL);
 	res = ft_strsub(*str, n, ft_strlen(*str) - n);
 	if (!res)
 		return (NULL);
-	ft_strdel(str);
+	free(*str);
+	*str = NULL;
 	return (res);
 }

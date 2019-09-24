@@ -1,30 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_copyuntil.c                                     :+:      :+:    :+:   */
+/*   ft_nchjoinstr.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amerlon- <amerlon-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/04 21:29:51 by amerlon-          #+#    #+#             */
-/*   Updated: 2018/12/04 21:39:28 by amerlon-         ###   ########.fr       */
+/*   Created: 2019/09/02 16:50:14 by cpollich          #+#    #+#             */
+/*   Updated: 2019/09/03 14:12:05 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_copyuntil(char *str, int c)
+char	*ft_nchjoinstr(char *str, char c, int n)
 {
 	char	*res;
-	char	*symb;
+	int		i;
+	int		j;
 
-	if (!str)
-		return (NULL);
-	symb = ft_strchr(str, c);
-	if (!symb)
-		return (NULL);
-	res = ft_strnew(symb - str);
-	if (!res)
-		return (NULL);
-	res = ft_strncpy(res, str, symb - str);
+	if (n < 0)
+		return (ft_strdup(str));
+	res = ft_strnew(ft_strlen(str) + n);
+	j = -1;
+	while (n--)
+		res[++j] = c;
+	i = -1;
+	while (str[++i])
+		res[++j] = str[i];
 	return (res);
 }

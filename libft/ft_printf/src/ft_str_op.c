@@ -1,29 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoinch.c                                     :+:      :+:    :+:   */
+/*   ft_str_op.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/30 20:07:17 by cpollich          #+#    #+#             */
-/*   Updated: 2019/08/30 20:10:31 by cpollich         ###   ########.fr       */
+/*   Created: 2019/09/03 17:45:29 by cpollich          #+#    #+#             */
+/*   Updated: 2019/09/03 17:45:42 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-char	*ft_strjoinch(char **str, char c)
+void			str_clean(t_string **s)
 {
-	char	*res;
+	if (s && *s)
+	{
+		ft_strdel(&(*s)->data);
+		(*s)->capacity = 0;
+		(*s)->size = 0;
+	}
+}
 
-	if (!str || !(*str))
-		return (NULL);
-	res = ft_strnew(ft_strlen(*str) + 1);
-	if (!res)
-		return (NULL);
-	res = ft_strcpy(res, *str);
-	res = ft_strncat(res, &c, 1);
-	free(*str);
-	*str = NULL;
-	return (res);
+void			str_destroy(t_string **s)
+{
+	if (s && *s)
+	{
+		ft_strdel(&(*s)->data);
+		(*s)->capacity = 0;
+		(*s)->size = 0;
+		free(*s);
+		*s = NULL;
+	}
 }

@@ -1,29 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoinch.c                                     :+:      :+:    :+:   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/30 20:07:17 by cpollich          #+#    #+#             */
-/*   Updated: 2019/08/30 20:10:31 by cpollich         ###   ########.fr       */
+/*   Created: 2019/05/13 19:37:26 by cpollich          #+#    #+#             */
+/*   Updated: 2019/07/24 19:44:06 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-char	*ft_strjoinch(char **str, char c)
+int	ft_printf(const char *form, ...)
 {
-	char	*res;
+	va_list	vargs;
+	int		i;
+	int		ret;
+	int		j;
 
-	if (!str || !(*str))
-		return (NULL);
-	res = ft_strnew(ft_strlen(*str) + 1);
-	if (!res)
-		return (NULL);
-	res = ft_strcpy(res, *str);
-	res = ft_strncat(res, &c, 1);
-	free(*str);
-	*str = NULL;
-	return (res);
+	i = -1;
+	ret = 0;
+	va_start(vargs, form);
+	while (form[++i])
+	{
+		if (form[i] == '%')
+			ret += do_tok(form + i + 1, vargs, &i);
+		else
+		{
+			j = 0;
+			j += ft_putstr_until((char *)form + i, '%');
+			ret += j;
+			i += j - 1;
+		}
+	}
+	va_end(vargs);
+	return (ret);
 }
