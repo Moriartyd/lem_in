@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lem_in.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adavis <adavis@student.42.fr>              +#+  +:+       +#+        */
+/*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/09 14:44:25 by cpollich          #+#    #+#             */
-/*   Updated: 2019/09/24 14:43:36 by adavis           ###   ########.fr       */
+/*   Updated: 2019/09/24 14:59:31 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ t_room				*rm_room(t_room *room);
 t_rooms				*rm_rooms(t_rooms *head);
 void				mem_clean(t_lemin *lem);
 int					check_startend(t_lemin *lem);
+int					check_lem(t_lemin *lem);
 
 void				push_queue(t_queue **queue, int index);
 int					pop_queue(t_queue **queue);

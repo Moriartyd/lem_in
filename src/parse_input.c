@@ -6,7 +6,7 @@
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/09 15:18:04 by cpollich          #+#    #+#             */
-/*   Updated: 2019/09/23 22:09:30 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/09/24 14:49:40 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ int				what_parse(char *line, t_lemin *lem, int *p, char **addline)
 	p[1] = get_type(line);
 	if (p[1] == -1 || ((p[2] == 1 || p[2] == 2) && p[1] != 4)
 		|| (p[2] == 3 && p[1] == 4))
-		return (-ft_strdel(&line));
+		return (-ft_strdel(&line) - 1);
 	if (p[1] == 1 || p[1] == 2)
 	{
 		line = ft_strjoinch(&line, '\n');
@@ -111,5 +111,5 @@ int				what_parse(char *line, t_lemin *lem, int *p, char **addline)
 		*addline = ft_stradd(*addline, line);
 	}
 	ft_strdel(&line);
-	return (p[2] == -1 ? (-1) : (0));
+	return (p[2] == -1 ? (-2) : (0));
 }
