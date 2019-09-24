@@ -6,11 +6,20 @@
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/23 17:27:54 by cpollich          #+#    #+#             */
-/*   Updated: 2019/09/24 14:59:46 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/09/24 17:13:42 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
+
+static int		set_startend(t_lemin *lem)
+{
+	if (lem->start)
+		lem->start->level = 0;
+	if (lem->end)
+		lem->end->level = INT_MAX;
+	return (0);
+}
 
 /*
 **	1	- start
@@ -46,6 +55,7 @@ int				parse_input(t_lemin *lem, char *name)
 	if (check_lem(lem) == -2)
 		return (-2);
 	ft_putstr(output);
+	set_startend(lem);
 	ft_strdel(&output);
 	return (0);
 }

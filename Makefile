@@ -6,7 +6,7 @@
 #    By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/09 13:09:12 by cpollich          #+#    #+#              #
-#    Updated: 2019/09/24 15:09:59 by cpollich         ###   ########.fr        #
+#    Updated: 2019/09/24 17:14:24 by cpollich         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ SRC	=	parse_input.c parse_input2.c	\
 all: $(NAME)
 
 $(OBJ_DIR):
-	mkdir -p $(OBJ_DIR)
+	@mkdir -p $(OBJ_DIR)
 
 $(NAME): $(LIBFT) $(OBJ_DIR) $(OBJS) $(LEM_H)
 	@echo "\033[35mCompiling ./lem-in\033[0m"
