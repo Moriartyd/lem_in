@@ -6,7 +6,7 @@
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/09 21:59:53 by cpollich          #+#    #+#             */
-/*   Updated: 2019/09/24 15:01:06 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/09/24 15:09:24 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	main(int argc, char **argv)
 	argc = 0;
 	if ((res = parse_input(lem, argv[1])) < 0)
 	{
-        res == -1 ? perror(argv[0]) : (0);
+        res == -1 ? perror("Error") : (0);
 		mem_clean(lem);
 		return (1);
 	}
