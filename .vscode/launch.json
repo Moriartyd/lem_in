@@ -9,7 +9,7 @@
             "type": "cppdbg",
             "request": "launch",
             "program": "${workspaceFolder}/lem-in",
-            "args": ["map2"],
+            "args": ["maps/holygraph"],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
             "environment": [],

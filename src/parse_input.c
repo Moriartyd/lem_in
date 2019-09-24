@@ -6,7 +6,7 @@
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/09 15:18:04 by cpollich          #+#    #+#             */
-/*   Updated: 2019/09/24 14:49:40 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/09/24 21:16:41 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,18 @@ static int		get_type(char *str)
 {
 	if (str[0] == '#' && str[1] == '#' && !ft_strcmp(str + 2, "start"))
 		return (1);
-	if (str[0] == '#' && str[1] == '#' && !ft_strcmp(str + 2, "end"))
+	else if (str[0] == '#' && str[1] == '#' && !ft_strcmp(str + 2, "end"))
 		return (2);
-	if (ft_strchr(str, '-'))
+	else if (ft_strchr(str, '-'))
 		return (3);
-	if (ft_strnchr(str, ' ', 2) != -1)
-		return (4);
-	if (str[0] == '#')
+	else if (str[0] == '#')
 		return (0);
-	if (!ft_isnumeric(str))
+	else if (ft_strnchr(str, ' ', 2) != -1)
+		return (4);
+	else if (!ft_isnumeric(str))
 		return (-1);
-	return (5);
+	else
+		return (5);
 }
 
 static t_room	*parse_room(char *line, t_lemin *lem, int *status, int *ind)

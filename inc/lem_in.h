@@ -6,7 +6,7 @@
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/09 14:44:25 by cpollich          #+#    #+#             */
-/*   Updated: 2019/09/24 17:14:51 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/09/24 20:43:44 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,17 @@
 # include <errno.h>
 # include <limits.h>
 
-# include "../libft/inc/libft.h"
-# include "../libft/inc/ft_printf.h"
-
+# include "libft.h"
+# include "ft_printf.h"
 
 typedef struct		s_room
 {
 	char			*name;
 	int				index;
 	int				level;
+	int				in;
+	int				out;
+
 }					t_room;
 
 typedef struct		s_rooms

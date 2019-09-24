@@ -6,7 +6,7 @@
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/09 16:27:45 by cpollich          #+#    #+#             */
-/*   Updated: 2019/09/24 17:15:07 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/09/24 20:47:37 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ t_room	*create_room(size_t size, int *ind)
 	}
 	room->index = *ind;
 	room->level = -1;
+	room->in = 0;
+	room->out = 0;
 	*ind = *ind + 1;
 	return (room);
 }

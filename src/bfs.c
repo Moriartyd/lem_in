@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bfs.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adavis <adavis@student.42.fr>              +#+  +:+       +#+        */
+/*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/24 13:15:40 by adavis            #+#    #+#             */
-/*   Updated: 2019/09/24 20:28:11 by adavis           ###   ########.fr       */
+/*   Updated: 2019/09/24 21:20:55 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,42 +35,28 @@ void	print_levels(t_lemin *lem)
 	}
 }
 
+/*
+**	OUT	- horizontal
+**	IN	- vertikal
+*/
+
 void	count_in_out(t_lemin *lem)
 {
-	int		in[lem->size];
-	int		out[lem->size];
+	int		index;
 	int		i;
-	int		j;
+	t_rooms	*rooms;
 
-	i = 0;
-	while (i < lem->size)
+	rooms = lem->list;
+	while (rooms && rooms->room)
 	{
-		in[i] = 0;
-		out[i] = 0;
-		i++;
-	}
-	i = 0;
-	while (i < lem->size)
-	{
-		j = 0;
-		while (j < lem->size)
+		index = rooms->room->index;
+		i = -1;
+		while (++i < lem->size)
 		{
-			if (lem->smezh[i][j] == 1)
-			{
-				out[i] += 1;
-				in[j] += 1;
-			}
-			j++;
+			rooms->room->out += lem->smezh[index][i];
+			rooms->room->in += lem->smezh[i][index];
 		}
-		i++;
-	}
-	i = 0;
-	while (i < lem->size)
-	{
-		printf("Room %s:\n", find_room_ind(i, lem)->name);
-		printf("in: %d\n", in[i]);
-		printf("out: %d\n", out[i]);
-		i++;
+		rooms = rooms->next;
 	}
 }
 

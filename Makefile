@@ -6,7 +6,7 @@
 #    By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/09 13:09:12 by cpollich          #+#    #+#              #
-#    Updated: 2019/09/24 17:14:24 by cpollich         ###   ########.fr        #
+#    Updated: 2019/09/24 20:40:20 by cpollich         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,7 @@ NAME 	= lem-in
 F		= -Wall -Wextra -Werror
 
 LIBFT_DIR		= ./libft
+LIBFT_INC_DIR	= $(LIBFT_DIR)/inc
 SRC_DIR			= ./src
 INC_DIR			= ./inc
 OBJ_DIR			= ./obj
@@ -39,8 +40,8 @@ $(NAME): $(LIBFT) $(OBJ_DIR) $(OBJS) $(LEM_H)
 	@gcc $(LIBFT) $F $(OBJS) -o $(NAME)
 	@echo "\033[1;32m./lem-in was built\033[0m"
 
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
-	@gcc $(FLAGS) -c -g $< -I$(INC_DIR) -I$(LIBFT_DIR) -o $@
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(LEM_H)
+	@gcc $(FLAGS) -c -g $< -I$(INC_DIR) -I$(LIBFT_INC_DIR) -o $@
 
 $(LIBFT):
 	@make -C libft
