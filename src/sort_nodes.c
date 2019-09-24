@@ -6,7 +6,7 @@
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/09 21:02:33 by cpollich          #+#    #+#             */
-/*   Updated: 2019/09/23 22:39:54 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/09/24 15:54:02 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,22 @@ t_rooms		*find_room(const char *name, t_lemin *lem)
 	{
 		if (!ft_strcmp(rooms->room->name, name))
 			return (rooms);
+		rooms = rooms->next;
+	}
+	return (NULL);
+}
+
+t_room		*find_room_ind(int ind, t_lemin *lem)
+{
+	t_rooms	*rooms;
+
+	if (!lem || !lem->list || ind < 0)
+		return (NULL);
+	rooms = lem->list;
+	while (rooms)
+	{
+		if (rooms->room->index == ind)
+			return (rooms->room);
 		rooms = rooms->next;
 	}
 	return (NULL);

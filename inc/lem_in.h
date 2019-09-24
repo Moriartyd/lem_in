@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lem_in.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adavis <adavis@student.42.fr>              +#+  +:+       +#+        */
+/*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/09 14:44:25 by cpollich          #+#    #+#             */
-/*   Updated: 2019/09/24 15:18:25 by adavis           ###   ########.fr       */
+/*   Updated: 2019/09/24 15:54:27 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ t_rooms				*init_rooms(void);
 t_rooms				*create_firstrooms(t_room *room);
 t_room				*create_room(size_t size, int *ind);
 t_rooms				*find_room(const char *name, t_lemin *lem);
+t_room				*find_room_ind(int ind, t_lemin *lem);
 void				parse_link(char *str, t_lemin *lem, int *stat);
 t_room				*rm_room(t_room *room);
 t_rooms				*rm_rooms(t_rooms *head);
