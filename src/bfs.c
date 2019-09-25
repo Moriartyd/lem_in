@@ -6,7 +6,7 @@
 /*   By: adavis <adavis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/24 13:15:40 by adavis            #+#    #+#             */
-/*   Updated: 2019/09/25 21:40:14 by adavis           ###   ########.fr       */
+/*   Updated: 2019/09/25 23:48:15 by adavis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,10 @@ void	print_smezh(t_lemin *lem)
 	}
 }
 
+/*
+**	Shitty pathfinder
+*/
+
 void	make_path(t_lemin *lem, t_stack **s)
 {
 	int		i;
@@ -90,6 +94,10 @@ void	make_path(t_lemin *lem, t_stack **s)
 	}
 }
 
+/*
+**	Shitty pathfinder
+*/
+
 void	create_paths(t_lemin *lem)
 {
 	t_stack	*s;
@@ -112,6 +120,31 @@ void	create_paths(t_lemin *lem)
 		else
 			pop_stack(&s);
 	}
+}
+
+void	remove_input_forks(t_lemin *lem)
+{
+	int		i;
+	int		j;
+
+	j = 0;
+	while (j < lem->size)
+	{
+		if (find_room_ind(j, lem)->in > 1)
+		{
+			i = 0;
+			while (i < lem->size)
+			{
+				if (lem->smezh[i][find_room_ind(j, lem)->index] == 1 && find_room_ind(i, lem)->out > 1)
+				{
+					lem->smezh[i][find_room_ind(j, lem)->index] = 0;
+				}
+				i++;
+			}
+		}
+		j++;
+	}
+	print_smezh(lem);
 }
 
 int		remove_from_smezh(t_room *room, t_lemin *lem)
@@ -158,6 +191,7 @@ void	remove_deadends(t_lemin *lem)
 		}
 	}
 	print_smezh(lem);
+	remove_input_forks(lem);
 	create_paths(lem);
 }
 
