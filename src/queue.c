@@ -6,12 +6,11 @@
 /*   By: adavis <adavis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/24 13:20:10 by adavis            #+#    #+#             */
-/*   Updated: 2019/09/24 14:35:52 by adavis           ###   ########.fr       */
+/*   Updated: 2019/09/25 19:06:25 by adavis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
-#include <stdio.h>
 
 t_queue	*init_queue(int index)
 {

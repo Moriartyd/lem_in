@@ -6,12 +6,14 @@
 /*   By: adavis <adavis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/24 13:15:40 by adavis            #+#    #+#             */
-/*   Updated: 2019/09/24 22:27:40 by adavis           ###   ########.fr       */
+/*   Updated: 2019/09/25 21:40:14 by adavis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 #include <stdio.h>
+
+void	remove_links(t_lemin *lem);
 
 int		q_len(t_queue *q)
 {
@@ -63,6 +65,55 @@ void	print_smezh(t_lemin *lem)
 	}
 }
 
+void	make_path(t_lemin *lem, t_stack **s)
+{
+	int		i;
+	int		current;
+
+	current = read_stack(*s);
+	if (current != lem->end->index)
+	{
+		i = 0;
+		while (i < lem->size)
+		{
+			if (lem->smezh[current][i] == 1)
+			{
+				push_stack(s, i);
+				make_path(lem, s);
+			}
+			i++;
+		}
+	}
+	else
+	{
+		push_stack(s, -1);
+	}
+}
+
+void	create_paths(t_lemin *lem)
+{
+	t_stack	*s;
+	int		i;
+
+	s = NULL;
+	push_stack(&s, lem->start->index);
+	make_path(lem, &s);
+	pop_stack(&s);
+	while (s)
+	{
+		if (read_stack(s) != lem->start->index)
+		{
+			i = pop_stack(&s);
+			if (i == -1)
+				printf("\n");
+			else
+				printf("%s ", find_room_ind(i, lem)->name);
+		}
+		else
+			pop_stack(&s);
+	}
+}
+
 int		remove_from_smezh(t_room *room, t_lemin *lem)
 {
 	int		i;
@@ -107,6 +158,7 @@ void	remove_deadends(t_lemin *lem)
 		}
 	}
 	print_smezh(lem);
+	create_paths(lem);
 }
 
 /*

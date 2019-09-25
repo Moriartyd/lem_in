@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lem_in.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
+/*   By: adavis <adavis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/09 14:44:25 by cpollich          #+#    #+#             */
-/*   Updated: 2019/09/24 20:43:44 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/09/25 20:08:24 by adavis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,12 @@ typedef struct		s_queue
 	struct s_queue	*next;
 }					t_queue;
 
+typedef struct 		s_stack
+{
+	int				nbr;
+	struct s_stack	*next;
+}					t_stack;
+
 
 int					parse_input(t_lemin *lem, char *name);
 int					what_parse(char *line, t_lemin *lem,
@@ -78,5 +84,10 @@ void				push_queue(t_queue **queue, int index);
 int					pop_queue(t_queue **queue);
 
 void				bfs(t_lemin *lem);
+
+t_stack				*init_stack(int nbr);
+void				push_stack(t_stack **s, int nbr);
+int					read_stack(t_stack *s);
+int					pop_stack(t_stack **s);
 
 #endif
