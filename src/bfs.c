@@ -6,7 +6,7 @@
 /*   By: adavis <adavis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/24 13:15:40 by adavis            #+#    #+#             */
-/*   Updated: 2019/09/25 23:48:15 by adavis           ###   ########.fr       */
+/*   Updated: 2019/09/26 16:46:35 by adavis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,25 +126,31 @@ void	remove_input_forks(t_lemin *lem)
 {
 	int		i;
 	int		j;
+	int		current_level;
+	int		flag;
 
-	j = 0;
-	while (j < lem->size)
+	current_level = 0;
+	flag = 1;
+	while (flag)
 	{
-		if (find_room_ind(j, lem)->in > 1)
+		current_level++;
+		flag = 0;
+		j = -1;
+		while (++j < lem->size)
 		{
-			i = 0;
-			while (i < lem->size)
+			if (find_room_ind(j, lem)->level == current_level)
 			{
-				if (lem->smezh[i][find_room_ind(j, lem)->index] == 1 && find_room_ind(i, lem)->out > 1)
+				flag = 1;
+				if (find_room_ind(j, lem)->in > 1)
 				{
-					lem->smezh[i][find_room_ind(j, lem)->index] = 0;
-				}
-				i++;
+					i = -1;
+					while (++i < lem->size)
+						if (lem->smezh[i][j] == 1 && find_room_ind(i, lem)->out > 1)
+							lem->smezh[i][j] = 0;
+				}	
 			}
 		}
-		j++;
 	}
-	print_smezh(lem);
 }
 
 int		remove_from_smezh(t_room *room, t_lemin *lem)
@@ -193,6 +199,7 @@ void	remove_deadends(t_lemin *lem)
 	print_smezh(lem);
 	remove_input_forks(lem);
 	create_paths(lem);
+	print_smezh(lem);
 }
 
 /*
