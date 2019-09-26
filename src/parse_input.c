@@ -6,7 +6,7 @@
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/09 15:18:04 by cpollich          #+#    #+#             */
-/*   Updated: 2019/09/26 17:57:48 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/09/26 23:31:54 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,26 +35,27 @@ static t_room	*parse_room(char *line, t_lemin *lem, int *status, int *ind)
 	t_room	*room;
 	size_t	size;
 	t_rooms	*head;
+	int		check;
 
 	size = ft_strchr(line, ' ') - line;
 	if (!(room = create_room(size, ind)))
 		return (NULL);
+	set_coord(room, line + size);
 	ft_strncpy(room->name, line, size);
 	if (!lem->list)
 	{
 		if (!(lem->list = create_firstrooms(room)))
 			return (NULL);
-		else
-			return (room);
+		return (room);
 	}
 	head = lem->list;
-	while (head->next)
+	while (head->next && (check = valid_room(room, head->room)))
 		head = head->next;
 	if (!(head->next = add_rooms(head, room)))
 		return (NULL);
-	*status = 4;
+	*status = check ? 4 : -4;
 	lem->size = *ind;
-	return (room);
+	return ((check) ? (room) : (NULL));
 }
 
 static void		parse_ants(char *line, t_lemin *lem, int *status)
@@ -112,5 +113,5 @@ int				what_parse(char *line, t_lemin *lem, int *p, char **addline)
 		*addline = ft_stradd(*addline, line);
 	}
 	ft_strdel(&line);
-	return (p[2] == -1 ? (-2) : (0));
+	return (p[2] < 0 ? (p[2]) : (0));
 }

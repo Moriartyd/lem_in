@@ -6,7 +6,7 @@
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/09 14:44:25 by cpollich          #+#    #+#             */
-/*   Updated: 2019/09/26 21:45:24 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/09/26 23:32:44 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ typedef struct		s_room
 	char			*name;
 	int				index;
 	int				level;
+	int				x;
+	int				y;
 	int				in;
 	int				out;
 
@@ -72,6 +74,8 @@ t_rooms				*init_rooms(void);
 t_rooms				*create_firstrooms(t_room *room);
 t_room				*create_room(size_t size, int *ind);
 t_rooms				*find_room(const char *name, t_lemin *lem);
+void				set_coord(t_room *room, char *line);
+int					valid_room(t_room *room1, t_room *room2);
 t_room				*find_room_ind(int ind, t_lemin *lem);
 void				parse_link(char *str, t_lemin *lem, int *stat);
 t_room				*rm_room(t_room *room);
@@ -100,5 +104,6 @@ void				remove_output_forks(t_lemin *lem);
 
 int					q_len(t_queue *q);
 void	create_paths(t_lemin *lem);
+void	error_manager(t_lemin *lem, int error);
 
 #endif

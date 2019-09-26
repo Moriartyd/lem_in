@@ -6,7 +6,7 @@
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/22 16:58:52 by cpollich          #+#    #+#             */
-/*   Updated: 2019/09/20 20:48:01 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/09/26 23:27:05 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,7 @@ int		ft_atoi(const char *str)
 		res = res * 10 + str[i] - '0';
 		i++;
 	}
-	if ((res > 2147483648 && sign == -1) || (res > 2147483647 && sign == 1) ||
-		str[i])
+	if ((res > 2147483648 && sign == -1) || (res > 2147483647 && sign == 1))
 		return (0);
 	return (sign * res);
 }
