@@ -6,7 +6,7 @@
 /*   By: adavis <adavis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/24 13:15:40 by adavis            #+#    #+#             */
-/*   Updated: 2019/09/26 21:23:28 by adavis           ###   ########.fr       */
+/*   Updated: 2019/09/26 21:27:47 by adavis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	print_smezh(t_lemin *lem)
 	i = 0;
 	while (i < lem->size)
 	{
-		printf("%s\t", find_room_ind(i, lem)->name);
+		printf("%16s\t", find_room_ind(i, lem)->name);
 		j = 0;
 		while (j < lem->size)
 		{

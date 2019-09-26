@@ -6,7 +6,7 @@
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/13 15:01:04 by cpollich          #+#    #+#             */
-/*   Updated: 2019/09/23 22:14:01 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/09/26 20:49:28 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,6 @@ void		parse_link(char *str, t_lemin *lem, int *stat)
 	char	**arr;
 	int		res;
 
-	sort_nodes(lem->list);
 	if (!(arr = ft_strsplit(str, '-')))
 		*stat = -1;
 	if (!lem->smezh)

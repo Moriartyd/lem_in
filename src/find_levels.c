@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   find_levels.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adavis <adavis@student.42.fr>              +#+  +:+       +#+        */
+/*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/26 18:03:26 by cpollich          #+#    #+#             */
-/*   Updated: 2019/09/26 19:24:17 by adavis           ###   ########.fr       */
+/*   Updated: 2019/09/26 20:57:59 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,9 @@ static t_rooms	*choose_best_variant(t_rooms **rooms)
 		if (rooms[i]->room->level > level)
 			level = rooms[i]->room->level;
 	i = -1;
-	while (rooms && rooms[++i])
-		if (rooms[i]->room->level == level)
-			return (rooms[i]);
-	return (NULL);
+	while (rooms && rooms[++i] && rooms[i]->room->level != level)
+		;
+	return (rooms[i]);
 }
 
 static t_rooms	*find_rooms_ind(int ind, t_lemin *lem)
@@ -57,7 +56,8 @@ t_rooms			*find_final_room(t_lemin *lem)
 	while (++i < lem->size)
 		if (lem->smezh[i][lem->end->index])
 			size++;
-	rooms = (t_rooms **)malloc(sizeof(t_rooms *) * size + 1);
+	if (!(rooms = (t_rooms **)malloc(sizeof(t_rooms *) * (size + 1))))
+		exit (-1);
 	i = -1;
 	rooms[size] = NULL;
 	size = 0;
