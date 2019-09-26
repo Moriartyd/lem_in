@@ -6,7 +6,7 @@
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/09 14:44:25 by cpollich          #+#    #+#             */
-/*   Updated: 2019/09/26 23:32:44 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/09/26 23:34:48 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ void				remove_input_forks(t_lemin *lem);
 void				remove_output_forks(t_lemin *lem);
 
 int					q_len(t_queue *q);
-void	create_paths(t_lemin *lem);
-void	error_manager(t_lemin *lem, int error);
+void				create_paths(t_lemin *lem);
+void				error_manager(t_lemin *lem, int error);
 
 #endif
