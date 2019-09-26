@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lem_in.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adavis <adavis@student.42.fr>              +#+  +:+       +#+        */
+/*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/09 14:44:25 by cpollich          #+#    #+#             */
-/*   Updated: 2019/09/26 20:28:54 by adavis           ###   ########.fr       */
+/*   Updated: 2019/09/26 21:45:24 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,5 +94,11 @@ t_rooms				*find_final_room(t_lemin *lem);
 int					pathlen(t_lemin *lem, int index);
 
 void				remove_links(t_lemin *lem);
+
+void				remove_input_forks(t_lemin *lem);
+void				remove_output_forks(t_lemin *lem);
+
+int					q_len(t_queue *q);
+void	create_paths(t_lemin *lem);
 
 #endif

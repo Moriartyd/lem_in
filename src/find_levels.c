@@ -6,7 +6,7 @@
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/26 18:03:26 by cpollich          #+#    #+#             */
-/*   Updated: 2019/09/26 20:57:59 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/09/26 21:34:03 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,17 +57,14 @@ t_rooms			*find_final_room(t_lemin *lem)
 		if (lem->smezh[i][lem->end->index])
 			size++;
 	if (!(rooms = (t_rooms **)malloc(sizeof(t_rooms *) * (size + 1))))
-		exit (-1);
+		exit(-1);
 	i = -1;
 	rooms[size] = NULL;
 	size = 0;
 	while (++i < lem->size)
 	{
 		if (lem->smezh[i][lem->end->index])
-		{
-			rooms[size] = find_rooms_ind(i, lem);
-			size++;
-		}
+			rooms[size++] = find_rooms_ind(i, lem);
 	}
 	ret = choose_best_variant(rooms);
 	free(rooms);

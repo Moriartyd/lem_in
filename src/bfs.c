@@ -3,28 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   bfs.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adavis <adavis@student.42.fr>              +#+  +:+       +#+        */
+/*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/24 13:15:40 by adavis            #+#    #+#             */
-/*   Updated: 2019/09/26 21:27:47 by adavis           ###   ########.fr       */
+/*   Updated: 2019/09/26 21:46:27 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 #include <stdio.h>
-
-int		q_len(t_queue *q)
-{
-	int		cnt;
-
-	cnt = 0;
-	while (q)
-	{
-		cnt++;
-		q = q->next;
-	}
-	return (cnt);
-}
 
 void	print_levels(t_lemin *lem)
 {
@@ -63,156 +50,6 @@ void	print_smezh(t_lemin *lem)
 	}
 }
 
-/*
-**	Shitty pathfinder
-*/
-
-void	make_path(t_lemin *lem, t_stack **s)
-{
-	int		i;
-	int		current;
-
-	current = read_stack(*s);
-	if (current != lem->end->index)
-	{
-		i = 0;
-		while (i < lem->size)
-		{
-			if (lem->smezh[current][i] == 1)
-			{
-				push_stack(s, i);
-				make_path(lem, s);
-			}
-			i++;
-		}
-	}
-	else
-	{
-		push_stack(s, -1);
-	}
-}
-
-/*
-**	Shitty pathfinder
-*/
-
-void	create_paths(t_lemin *lem)
-{
-	t_stack	*s;
-	int		i;
-
-	s = NULL;
-	push_stack(&s, lem->start->index);
-	make_path(lem, &s);
-	pop_stack(&s);
-	while (s)
-	{
-		if (read_stack(s) != lem->start->index)
-		{
-			i = pop_stack(&s);
-			if (i == -1)
-				printf("\n");
-			else
-				printf("%s ", find_room_ind(i, lem)->name);
-		}
-		else
-			pop_stack(&s);
-	}
-}
-
-int		min_link(t_lemin *lem, int index)
-{
-	int		pathlens[lem->size];
-	int		i;
-	int		min;
-	int		min_link;
-
-	i = -1;
-	while (++i < lem->size)
-	{
-		if (lem->smezh[index][i] == 1)
-			pathlens[i] = pathlen(lem, i);
-		else
-			pathlens[i] = -1;
-	}
-	i = -1;
-	min = INT_MAX;
-	while (++i < lem->size)
-	{
-		if (pathlens[i] > 0 && pathlens[i] < min)
-		{
-			min = pathlens[i];
-			min_link = i;
-		}
-	}
-	return (min_link);
-}
-
-void	clean_outs(t_lemin *lem, int index)
-{
-	int		i;
-	int		min;
-
-	min = min_link(lem, index);
-	i = -1;
-	while (++i < lem->size)
-	{
-		if (lem->smezh[index][i] == 1 && i != min)
-			lem->smezh[index][i] = 0;
-	}
-}
-
-void	remove_output_forks(t_lemin *lem)
-{
-	int		lvl;
-	int		flag;
-	t_rooms	*rooms;
-
-	lvl = find_final_room(lem)->room->level + 1;
-	while (--lvl > 0)
-	{
-		rooms = lem->list;
-		while (rooms)
-		{
-			if (rooms->room->level == lvl && rooms->room->out > 1)
-				clean_outs(lem, rooms->room->index);
-			rooms = rooms->next;
-		}
-	}
-}
-
-void	remove_input_forks(t_lemin *lem)
-{
-	int		i;
-	int		j;
-	int		current_level;
-	int		flag;
-
-	current_level = 0;
-	flag = 1;
-	while (flag)
-	{
-		current_level++;
-		flag = 0;
-		j = -1;
-		while (++j < lem->size)
-		{
-			if (find_room_ind(j, lem)->level == current_level)
-			{
-				flag = 1;
-				if (find_room_ind(j, lem)->in > 1)
-				{
-					i = -1;
-					while (++i < lem->size)
-						if (lem->smezh[i][j] == 1 &&
-								find_room_ind(i, lem)->out > 1)
-							lem->smezh[i][j] = 0;
-				}
-			}
-		}
-	}
-}
-
 int		remove_from_smezh(t_room *room, t_lemin *lem)
 {
 	int		i;
@@ -245,10 +82,9 @@ void	remove_deadends(t_lemin *lem)
 		rooms = lem->list;
 		while (rooms)
 		{
-			if (rooms->room->out == 0 && rooms->room->level != INT_MAX && remove_from_smezh(rooms->room, lem))
-			{
+			if (rooms->room->out == 0 && rooms->room->level != INT_MAX
+				&& remove_from_smezh(rooms->room, lem))
 				all_clear = 0;
-			}
 			rooms = rooms->next;
 		}
 	}

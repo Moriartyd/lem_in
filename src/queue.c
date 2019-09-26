@@ -3,26 +3,40 @@
 /*                                                        :::      ::::::::   */
 /*   queue.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adavis <adavis@student.42.fr>              +#+  +:+       +#+        */
+/*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/24 13:20:10 by adavis            #+#    #+#             */
-/*   Updated: 2019/09/25 19:06:25 by adavis           ###   ########.fr       */
+/*   Updated: 2019/09/26 21:49:21 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-t_queue	*init_queue(int index)
+int				q_len(t_queue *q)
+{
+	int	cnt;
+
+	cnt = 0;
+	while (q)
+	{
+		cnt++;
+		q = q->next;
+	}
+	return (cnt);
+}
+
+static t_queue	*init_queue(int index)
 {
 	t_queue	*new;
 
-	new = (t_queue *)malloc(sizeof(*new));
+	if (!(new = (t_queue *)malloc(sizeof(*new))))
+		return (NULL);
 	new->index = index;
 	new->next = NULL;
 	return (new);
 }
 
-void	push_queue(t_queue **queue, int index)
+void			push_queue(t_queue **queue, int index)
 {
 	t_queue	*new;
 
@@ -30,14 +44,15 @@ void	push_queue(t_queue **queue, int index)
 		*queue = init_queue(index);
 	else
 	{
-		new = (t_queue *)malloc(sizeof(t_queue));
+		if (!(new = (t_queue *)malloc(sizeof(t_queue))))
+			exit(-1);
 		new->index = index;
 		new->next = *queue;
 		*queue = new;
 	}
 }
 
-int		pop_queue(t_queue **q)
+int				pop_queue(t_queue **q)
 {
 	int		index;
 	t_queue *q_iter;

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: adavis <adavis@student.42.fr>              +#+  +:+       +#+         #
+#    By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/09 13:09:12 by cpollich          #+#    #+#              #
-#    Updated: 2019/09/26 18:26:48 by adavis           ###   ########.fr        #
+#    Updated: 2019/09/26 21:50:16 by cpollich         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,11 +26,11 @@ LIBFT			= $(LIBFT_DIR)/libft.a
 SRC	=	parse_input.c parse_input2.c	\
 		room_memory.c rooms_memory.c	\
 		smezhnost.c sort_nodes.c		\
-		errors.c \
-		bfs.c \
+		errors.c 						\
+		bfs.c 							\
 		queue.c lemin_main.c stacks.c	\
-		find_levels.c \
-		pathlen.c
+		find_levels.c 					\
+		pathlen.c paths.c remove_forks.c\
 
 all: $(NAME)
 
@@ -64,6 +64,6 @@ test: $(LIBFT) $(SRC_DIR)/*.c main.c
 	gcc -g $F main.c src/* -I./inc -I./libft/inc libft/libft.a -o test
 
 rm:
-	rm -Rf test*
+	rm -Rf test* *.dSYM
 
 .PHONY: all clean fclean re test
