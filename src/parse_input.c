@@ -6,7 +6,7 @@
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/09 15:18:04 by cpollich          #+#    #+#             */
-/*   Updated: 2019/09/24 21:16:41 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/09/26 17:57:48 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@ static int		get_type(char *str)
 		return (1);
 	else if (str[0] == '#' && str[1] == '#' && !ft_strcmp(str + 2, "end"))
 		return (2);
-	else if (ft_strchr(str, '-'))
+	else if (ft_strchr(str, '-') && str[0] != '#')
 		return (3);
 	else if (str[0] == '#')
 		return (0);
-	else if (ft_strnchr(str, ' ', 2) != -1)
+	else if (ft_strnchr(str, ' ', 2) != -1 && str[0] != '#')
 		return (4);
 	else if (!ft_isnumeric(str))
 		return (-1);
