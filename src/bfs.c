@@ -6,7 +6,7 @@
 /*   By: adavis <adavis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/24 13:15:40 by adavis            #+#    #+#             */
-/*   Updated: 2019/09/26 20:41:18 by adavis           ###   ########.fr       */
+/*   Updated: 2019/09/26 21:23:28 by adavis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -216,25 +216,19 @@ void	remove_input_forks(t_lemin *lem)
 int		remove_from_smezh(t_room *room, t_lemin *lem)
 {
 	int		i;
-	int		j;
 
 	i = 0;
 	while (i < lem->size)
 	{
-		j = 0;
-		while (j < lem->size)
+		if (lem->smezh[i][room->index] == 1)
 		{
-			if (j == room->index && lem->smezh[i][j] == 1)
-			{
-				lem->smezh[i][j] = 0;
-				find_room_ind(i, lem)->out -= 1;
-				return (0);
-			}
-			j++;
+			lem->smezh[i][room->index] = 0;
+			find_room_ind(i, lem)->out -= 1;
+			return (1);
 		}
 		i++;
 	}
-	return (1);
+	return (0);
 }
 
 void	remove_deadends(t_lemin *lem)
@@ -251,8 +245,10 @@ void	remove_deadends(t_lemin *lem)
 		rooms = lem->list;
 		while (rooms)
 		{
-			if (rooms->room->out == 0 && rooms->room->level != INT_MAX)
-				all_clear = remove_from_smezh(rooms->room, lem);
+			if (rooms->room->out == 0 && rooms->room->level != INT_MAX && remove_from_smezh(rooms->room, lem))
+			{
+				all_clear = 0;
+			}
 			rooms = rooms->next;
 		}
 	}
