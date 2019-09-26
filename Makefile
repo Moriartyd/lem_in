@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+         #
+#    By: adavis <adavis@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/09 13:09:12 by cpollich          #+#    #+#              #
-#    Updated: 2019/09/26 18:23:13 by cpollich         ###   ########.fr        #
+#    Updated: 2019/09/26 18:26:48 by adavis           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,8 @@ SRC	=	parse_input.c parse_input2.c	\
 		errors.c \
 		bfs.c \
 		queue.c lemin_main.c stacks.c	\
-		find_levels.c
+		find_levels.c \
+		pathlen.c
 
 all: $(NAME)
 

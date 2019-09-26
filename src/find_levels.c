@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   find_levels.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
+/*   By: adavis <adavis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/26 18:03:26 by cpollich          #+#    #+#             */
-/*   Updated: 2019/09/26 18:24:05 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/09/26 19:24:17 by adavis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,5 +70,6 @@ t_rooms			*find_final_room(t_lemin *lem)
 		}
 	}
 	ret = choose_best_variant(rooms);
+	free(rooms);
 	return (ret);
 }

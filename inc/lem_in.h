@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lem_in.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
+/*   By: adavis <adavis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/09 14:44:25 by cpollich          #+#    #+#             */
-/*   Updated: 2019/09/26 18:23:25 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/09/26 20:28:54 by adavis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,5 +90,9 @@ void				push_stack(t_stack **s, int nbr);
 int					read_stack(t_stack *s);
 int					pop_stack(t_stack **s);
 t_rooms				*find_final_room(t_lemin *lem);
+
+int					pathlen(t_lemin *lem, int index);
+
+void				remove_links(t_lemin *lem);
 
 #endif
