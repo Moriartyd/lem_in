@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bfs.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
+/*   By: adavis <adavis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/24 13:15:40 by adavis            #+#    #+#             */
-/*   Updated: 2019/09/26 21:46:27 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/09/27 16:59:31 by adavis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ int		remove_from_smezh(t_room *room, t_lemin *lem)
 void	remove_deadends(t_lemin *lem)
 {
 	t_rooms *rooms;
+	t_room	*room;
 	int		all_clear;
 	int		i;
 	int		j;
@@ -79,20 +80,29 @@ void	remove_deadends(t_lemin *lem)
 	while (!all_clear)
 	{
 		all_clear = 1;
-		rooms = lem->list;
-		while (rooms)
+		i = -1;
+		while (++i < lem->size)
 		{
-			if (rooms->room->out == 0 && rooms->room->level != INT_MAX
-				&& remove_from_smezh(rooms->room, lem))
-				all_clear = 0;
-			rooms = rooms->next;
+			j = -1;
+			while (++j < lem->size)
+			{
+				if (lem->smezh[i][j])
+				{
+					room = find_room_ind(j, lem);
+					if (room->out == 0 && room->level != INT_MAX)
+					{
+						remove_from_smezh(room, lem);
+						all_clear = 0;
+					}
+				}
+			}
 		}
 	}
-	print_smezh(lem);
+	//print_smezh(lem);
 	remove_input_forks(lem);
-	print_smezh(lem);
+	//print_smezh(lem);
 	remove_output_forks(lem);
-	print_smezh(lem);
+	//print_smezh(lem);
 	create_paths(lem);
 }
 
@@ -129,22 +139,20 @@ void	remove_links(t_lemin *lem)
 	t_room	*k;
 	t_room	*l;
 
-	i = 0;
-	while (i < lem->size)
+	i = -1;
+	while (++i < lem->size)
 	{
-		printf("%s\t", find_room_ind(i, lem)->name);
-		j = 0;
-		while (j < lem->size)
+		j = -1;
+		while (++j < lem->size)
 		{
-			k = find_room_ind(i, lem);
-			l = find_room_ind(j, lem);
-			if (k->level >= l->level || k->level < 0 || l->level < 0)
-				lem->smezh[i][j] = 0;
-			printf("%d ", lem->smezh[i][j]);
-			j++;
+			if (lem->smezh[i][j])
+			{
+				k = find_room_ind(i, lem);
+				l = find_room_ind(j, lem);
+				if (k->level < 0 || k->level >= l->level || l->level < 0)
+					lem->smezh[i][j] = 0;
+			}
 		}
-		printf("\n");
-		i++;
 	}
 	count_in_out(lem);
 }

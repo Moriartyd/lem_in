@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   remove_forks.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
+/*   By: adavis <adavis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/26 21:38:31 by cpollich          #+#    #+#             */
-/*   Updated: 2019/09/26 21:47:39 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/09/27 16:59:01 by adavis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,18 +77,18 @@ void		remove_input_forks(t_lemin *lem)
 {
 	int		i;
 	int		j;
-	int		current_level;
+	int		cl;
 	int		flag;
 
-	current_level = 0;
+	cl = 0;
 	flag = 1;
 	while (flag)
 	{
-		current_level++;
+		cl++;
 		flag = 0;
 		j = -1;
 		while (++j < lem->size)
-			if (find_room_ind(j, lem)->level == current_level)
+			if (lem->smezh[i][j] && find_room_ind(j, lem)->level == cl)
 			{
 				flag = 1;
 				if (find_room_ind(j, lem)->in > 1)
