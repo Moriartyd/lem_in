@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_input.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cpollich <cpollich@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/09 15:18:04 by cpollich          #+#    #+#             */
-/*   Updated: 2019/09/26 23:31:54 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/09/27 22:16:00 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,12 @@ static t_room	*parse_room(char *line, t_lemin *lem, int *status, int *ind)
 		return (room);
 	}
 	head = lem->list;
-	while (head->next && (check = valid_room(room, head->room)))
+	while (head->next)
+	{
+		check = valid_room(room, head->room);// && (check = valid_room(room, head->room)))
 		head = head->next;
+	}
+	check = valid_room(room, head->room);
 	if (!(head->next = add_rooms(head, room)))
 		return (NULL);
 	*status = check ? 4 : -4;
