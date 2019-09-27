@@ -6,7 +6,7 @@
 /*   By: adavis <adavis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/24 13:15:40 by adavis            #+#    #+#             */
-/*   Updated: 2019/09/27 16:59:31 by adavis           ###   ########.fr       */
+/*   Updated: 2019/09/27 21:13:55 by adavis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,6 @@ int		remove_from_smezh(t_room *room, t_lemin *lem)
 
 void	remove_deadends(t_lemin *lem)
 {
-	t_rooms *rooms;
 	t_room	*room;
 	int		all_clear;
 	int		i;
