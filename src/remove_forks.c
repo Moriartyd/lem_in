@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   remove_forks.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adavis <adavis@student.42.fr>              +#+  +:+       +#+        */
+/*   By: adavis <adavis@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/26 21:38:31 by cpollich          #+#    #+#             */
-/*   Updated: 2019/09/27 16:59:01 by adavis           ###   ########.fr       */
+/*   Updated: 2019/09/28 01:11:38 by adavis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,29 +75,28 @@ void		remove_output_forks(t_lemin *lem)
 
 void		remove_input_forks(t_lemin *lem)
 {
+	t_rooms	*rooms;
+	int		ri;
 	int		i;
-	int		j;
 	int		cl;
-	int		flag;
 
 	cl = 0;
-	flag = 1;
-	while (flag)
+	while (cl++ < find_final_room(lem)->room->level)
 	{
-		cl++;
-		flag = 0;
-		j = -1;
-		while (++j < lem->size)
-			if (lem->smezh[i][j] && find_room_ind(j, lem)->level == cl)
+		rooms = lem->list;
+		while (rooms)
+		{
+			if (rooms->room->level == cl && rooms->room->in > 1)
 			{
-				flag = 1;
-				if (find_room_ind(j, lem)->in > 1)
+				ri = rooms->room->index;
+				i = -1;
+				while (++i < lem->size)
 				{
-					i = -1;
-					while (++i < lem->size)
-						if (lem->smezh[i][j] && find_room_ind(i, lem)->out > 1)
-							lem->smezh[i][j] = 0;
+					if (lem->smezh[i][ri] && find_room_ind(i, lem)->out > 1)
+						lem->smezh[i][ri] = 0;
 				}
 			}
+			rooms = rooms->next;
+		}
 	}
 }
