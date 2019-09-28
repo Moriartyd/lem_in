@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bfs.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adavis <adavis@student.42.fr>              +#+  +:+       +#+        */
+/*   By: adavis <adavis@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/24 13:15:40 by adavis            #+#    #+#             */
-/*   Updated: 2019/09/27 21:13:55 by adavis           ###   ########.fr       */
+/*   Updated: 2019/09/29 02:49:40 by adavis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	print_smezh(t_lemin *lem)
 	int		j;
 
 	i = 0;
-	while (i++ < lem->size * 2 + 7)
+	while (i++ < lem->size * 2 + 16)
 		printf("-");
 	printf("\n");
 	i = 0;
@@ -61,11 +61,11 @@ int		remove_from_smezh(t_room *room, t_lemin *lem)
 		{
 			lem->smezh[i][room->index] = 0;
 			find_room_ind(i, lem)->out -= 1;
-			return (1);
+			return (0);
 		}
 		i++;
 	}
-	return (0);
+	return (1);
 }
 
 void	remove_deadends(t_lemin *lem)
@@ -75,6 +75,7 @@ void	remove_deadends(t_lemin *lem)
 	int		i;
 	int		j;
 
+	print_smezh(lem);
 	all_clear = 0;
 	while (!all_clear)
 	{
@@ -90,18 +91,18 @@ void	remove_deadends(t_lemin *lem)
 					room = find_room_ind(j, lem);
 					if (room->out == 0 && room->level != INT_MAX)
 					{
-						remove_from_smezh(room, lem);
-						all_clear = 0;
+						all_clear = remove_from_smezh(room, lem);
 					}
 				}
 			}
 		}
 	}
-	//print_smezh(lem);
+	print_smezh(lem);
 	remove_input_forks(lem);
-	//print_smezh(lem);
+	remove_input_forks_dumb(lem);
+	print_smezh(lem);
 	remove_output_forks(lem);
-	//print_smezh(lem);
+	print_smezh(lem);
 	create_paths(lem);
 }
 

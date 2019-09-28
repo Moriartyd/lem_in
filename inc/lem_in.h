@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lem_in.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
+/*   By: adavis <adavis@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/09 14:44:25 by cpollich          #+#    #+#             */
-/*   Updated: 2019/09/26 23:34:48 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/09/29 02:39:17 by adavis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,7 @@ int					pathlen(t_lemin *lem, int index);
 void				remove_links(t_lemin *lem);
 
 void				remove_input_forks(t_lemin *lem);
+void				remove_input_forks_dumb(t_lemin *lem);
 void				remove_output_forks(t_lemin *lem);
 
 int					q_len(t_queue *q);

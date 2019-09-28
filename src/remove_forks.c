@@ -6,7 +6,7 @@
 /*   By: adavis <adavis@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/26 21:38:31 by cpollich          #+#    #+#             */
-/*   Updated: 2019/09/28 01:11:38 by adavis           ###   ########.fr       */
+/*   Updated: 2019/09/29 02:49:28 by adavis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ void		remove_input_forks(t_lemin *lem)
 	int		cl;
 
 	cl = 0;
-	while (cl++ < find_final_room(lem)->room->level)
+	while (++cl <= find_final_room(lem)->room->level)
 	{
 		rooms = lem->list;
 		while (rooms)
@@ -93,10 +93,37 @@ void		remove_input_forks(t_lemin *lem)
 				while (++i < lem->size)
 				{
 					if (lem->smezh[i][ri] && find_room_ind(i, lem)->out > 1)
+					{
 						lem->smezh[i][ri] = 0;
+						rooms->room->in -= 1;
+					}
 				}
 			}
 			rooms = rooms->next;
+		}
+	}
+}
+
+void	remove_input_forks_dumb(t_lemin *lem)
+{
+	t_rooms	*rooms;
+	t_room	*room;
+	int		i;
+	int		j;
+
+	rooms = lem->list;
+	i = -1;
+	while (++i < lem->size)
+	{
+		j = -1;
+		while (++j < lem->size)
+		{
+			if (lem->smezh[i][j] && (room = find_room_ind(j, lem))->in > 1 &&
+				room->level > 0 && room->level < INT_MAX)
+			{
+				lem->smezh[i][j] = 0;
+				room->in -= 1;
+			}
 		}
 	}
 }
