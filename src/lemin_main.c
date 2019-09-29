@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lemin_main.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adavis <adavis@student.21-school.ru>       +#+  +:+       +#+        */
+/*   By: cpollich <cpollich@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/09 21:59:53 by cpollich          #+#    #+#             */
-/*   Updated: 2019/09/28 00:43:31 by adavis           ###   ########.fr       */
+/*   Updated: 2019/09/29 18:11:42 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int	main(int argc, char **argv)
     res = 0;
 	lem = (t_lemin *)ft_memalloc(sizeof(t_lemin));
 	argc = 0;
+	
 	if ((res = parse_input(lem, argv[1])) < 0)
 	{
         error_manager(lem, res);

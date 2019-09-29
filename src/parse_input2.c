@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_input2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cpollich <cpollich@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/23 17:27:54 by cpollich          #+#    #+#             */
-/*   Updated: 2019/09/26 23:31:03 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/09/29 18:12:33 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,14 @@ static int		set_startend(t_lemin *lem)
 **	0	- comment
 */
 
-int				parse_input(t_lemin *lem, char *name)
+int				parse_input(t_lemin *lem, char *n)
 {
 	char	*line;
 	char	*output;
 	int		p[4];
 	int		ret;
 
-	if (!lem || (p[0] = !name ? 0 : open(name, O_RDONLY)) < 0)
+	if (!lem || (p[0] = !n ? 0 : open(n, O_RDONLY)) < 0|| read(p[0], line, 0))
 		return (-1);
 	p[2] = 0;
 	p[1] = 0;
