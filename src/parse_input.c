@@ -6,7 +6,7 @@
 /*   By: cpollich <cpollich@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/09 15:18:04 by cpollich          #+#    #+#             */
-/*   Updated: 2019/09/29 18:07:14 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/09/29 19:00:00 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,18 +43,12 @@ static t_room	*parse_room(char *line, t_lemin *lem, int *status, int *ind)
 	set_coord(room, line + size);
 	ft_strncpy(room->name, line, size);
 	if (!lem->list)
-	{
-		if (!(lem->list = create_firstrooms(room)))
-			return (NULL);
-		return (room);
-	}
+		return (!(lem->list = create_firstrooms(room)) ? NULL : room);
 	head = lem->list;
-	while (head->next)
-	{
-		check = valid_room(room, head->room);// && (check = valid_room(room, head->room)))
-		head = head->next;
-	}
-	// check = valid_room(room, head->room);
+	check = 1;
+	while (head->next && (head = head->next) && check)
+		check = valid_room(room, head->room);
+	check ? check = valid_room(room, head->room) : (0);
 	if (!(head->next = add_rooms(head, room)))
 		return (NULL);
 	*status = check ? 4 : -4;

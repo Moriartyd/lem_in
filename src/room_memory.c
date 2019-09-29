@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   room_memory.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cpollich <cpollich@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/09 16:27:45 by cpollich          #+#    #+#             */
-/*   Updated: 2019/09/26 23:35:03 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/09/29 19:01:57 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,9 +67,6 @@ int		valid_room(t_room *room1, t_room *room2)
 
 void	set_coord(t_room *room, char *line)
 {
-	int	x;
-	int	y;
-
 	room->x = ft_atoi(line + 1);
 	room->y = ft_atoi(ft_strchr(line + 1, ' ') + 1);
 }

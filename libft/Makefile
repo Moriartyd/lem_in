@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+         #
+#    By: cpollich <cpollich@student.21-school.ru    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/01 14:33:12 by cpollich          #+#    #+#              #
-#    Updated: 2019/09/24 20:38:44 by cpollich         ###   ########.fr        #
+#    Updated: 2019/09/29 18:39:39 by cpollich         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
