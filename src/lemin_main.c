@@ -6,7 +6,7 @@
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/09 21:59:53 by cpollich          #+#    #+#             */
-/*   Updated: 2019/09/30 17:51:34 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/09/30 18:20:28 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,27 +17,29 @@
 int	main(int argc, char **argv)
 {
 	t_lemin		*lem;
-	int			res;
 
-	res = 0;
-	lem = (t_lemin *)ft_memalloc(sizeof(t_lemin));
 	argc = 0;
-	if ((res = parse_input(lem, argv[1])) < 0)
-	{
-		error_manager(lem, res);
-		mem_clean(lem);
-		return (1);
-	}
+	if (!(lem = (t_lemin *)ft_memalloc(sizeof(t_lemin))))
+		ft_putstr("Error: programm can't allocate memory\n");
 	else
 	{
-		if (check_startend(lem) == -1)
+		if ((argc = parse_input(lem, argv[1])) < 0 || check_startend(lem) == -1)
 		{
-			perror(argv[0]);
+			error_manager(lem, argc);
 			mem_clean(lem);
 			return (1);
 		}
-		bfs(lem);
-		mem_clean(lem);
-		return (0);
+		else
+		{
+			if (check_startend(lem) == -1)
+			{
+				perror(argv[0]);
+				mem_clean(lem);
+				return (1);
+			}
+			bfs(lem);
+			mem_clean(lem);
+			return (0);
+		}
 	}
 }
