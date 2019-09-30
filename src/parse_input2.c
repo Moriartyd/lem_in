@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_input2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cpollich <cpollich@student.21-school.ru    +#+  +:+       +#+        */
+/*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/23 17:27:54 by cpollich          #+#    #+#             */
-/*   Updated: 2019/09/29 19:01:42 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/09/30 17:25:06 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,13 +48,14 @@ int				parse_input(t_lemin *lem, char *n)
 	p[1] = 0;
 	p[3] = 0;
 	output = "";
-	while (ft_gnl(p[0], &line) > 0 && p[1] >= 0)
+	ret = 0;
+	while ((ret = ft_gnl(p[0], &line)) > 0 && p[1] >= 0)
 	{
 		ret = what_parse(line, lem, p, &output);
 		if (ret < 0)
 			return (ret);
 	}
-	ft_strdel(&line);
+	*line ? ft_strdel(&line) : (0);
 	close(p[0]);
 	if (check_lem(lem) == -2)
 		return (-2);
