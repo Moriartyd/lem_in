@@ -6,65 +6,46 @@
 /*   By: adavis <adavis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/26 21:44:23 by cpollich          #+#    #+#             */
-/*   Updated: 2019/09/27 17:10:00 by adavis           ###   ########.fr       */
+/*   Updated: 2019/09/30 14:47:10 by adavis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
 /*
-**	Shitty pathfinder
+**	A better pathfinder
 */
 
-void	make_path(t_lemin *lem, t_stack **s)
+void	follow_path(t_lemin *lem, int i)
 {
-	int		i;
-	int		current;
+	int		j;
 
-	current = read_stack(*s);
-	if (current != lem->end->index)
+	j = -1;
+	while (++j < lem->size && i != lem->end->index)
 	{
-		i = 0;
-		while (i < lem->size)
+		if (lem->smezh[i][j])
 		{
-			if (lem->smezh[current][i] == 1)
-			{
-				push_stack(s, i);
-				make_path(lem, s);
-			}
-			i++;
+			printf("%s->", find_room_ind(i, lem)->name);
+			i = j;
+			j = -1;
 		}
 	}
-	else
-	{
-		push_stack(s, -1);
-	}
+	printf("%s\n", find_room_ind(i, lem)->name);
 }
-
-/*
-**	Shitty pathfinder
-*/
 
 void	create_paths(t_lemin *lem)
 {
-	t_stack	*s;
 	int		i;
+	int		start;
 
-	s = NULL;
-	push_stack(&s, lem->start->index);
-	make_path(lem, &s);
-	pop_stack(&s);
-	while (s)
+	start = lem->start->index;
+	i = -1;
+	while (++i < lem->size)
 	{
-		if (read_stack(s) != lem->start->index)
+		if (lem->smezh[start][i])
 		{
-			i = pop_stack(&s);
-			if (i == -1)
-				printf("\n");
-			else
-				printf("%s ", find_room_ind(i, lem)->name);
+			printf("\n");
+			follow_path(lem, i);
 		}
-		else
-			pop_stack(&s);
 	}
 }

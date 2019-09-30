@@ -6,7 +6,7 @@
 /*   By: adavis <adavis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 19:06:02 by adavis            #+#    #+#             */
-/*   Updated: 2019/09/25 21:38:00 by adavis           ###   ########.fr       */
+/*   Updated: 2019/09/29 20:14:40 by adavis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ int		read_stack(t_stack *s)
 int		pop_stack(t_stack **s)
 {
 	int		nbr;
-	t_stack **tmp;
 
 	nbr = (*s)->nbr;
 	if ((*s)->next)

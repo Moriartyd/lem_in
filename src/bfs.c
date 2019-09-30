@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bfs.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adavis <adavis@student.21-school.ru>       +#+  +:+       +#+        */
+/*   By: adavis <adavis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/24 13:15:40 by adavis            #+#    #+#             */
-/*   Updated: 2019/09/29 02:49:40 by adavis           ###   ########.fr       */
+/*   Updated: 2019/09/30 14:46:25 by adavis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ void	remove_deadends(t_lemin *lem)
 	int		i;
 	int		j;
 
-	print_smezh(lem);
+	//print_smezh(lem);
 	all_clear = 0;
 	while (!all_clear)
 	{
@@ -97,12 +97,12 @@ void	remove_deadends(t_lemin *lem)
 			}
 		}
 	}
-	print_smezh(lem);
+	//print_smezh(lem);
 	remove_input_forks(lem);
 	remove_input_forks_dumb(lem);
-	print_smezh(lem);
+	//print_smezh(lem);
 	remove_output_forks(lem);
-	print_smezh(lem);
+	//print_smezh(lem);
 	create_paths(lem);
 }
 

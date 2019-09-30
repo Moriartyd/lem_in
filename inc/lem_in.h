@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lem_in.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adavis <adavis@student.21-school.ru>       +#+  +:+       +#+        */
+/*   By: adavis <adavis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/09 14:44:25 by cpollich          #+#    #+#             */
-/*   Updated: 2019/09/29 02:39:17 by adavis           ###   ########.fr       */
+/*   Updated: 2019/09/30 14:38:49 by adavis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,5 +106,7 @@ void				remove_output_forks(t_lemin *lem);
 int					q_len(t_queue *q);
 void				create_paths(t_lemin *lem);
 void				error_manager(t_lemin *lem, int error);
+
+int					remove_from_smezh(t_room *room, t_lemin *lem);
 
 #endif
