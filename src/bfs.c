@@ -6,7 +6,7 @@
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/24 13:15:40 by adavis            #+#    #+#             */
-/*   Updated: 2019/09/30 20:48:09 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/09/30 21:20:08 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,6 @@ void	remove_deadends(t_lemin *lem)
 	int		i;
 	int		j;
 
-	//print_smezh(lem);
 	all_clear = 0;
 	while (!all_clear)
 	{
@@ -91,12 +90,9 @@ void	remove_deadends(t_lemin *lem)
 						all_clear = remove_from_smezh(room, lem);
 		}
 	}
-	//print_smezh(lem);
 	remove_input_forks(lem);
 	remove_input_forks_dumb(lem);
-	//print_smezh(lem);
 	remove_output_forks(lem);
-	//print_smezh(lem);
 	create_paths(lem);
 }
 

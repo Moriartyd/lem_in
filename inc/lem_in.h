@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lem_in.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adavis <adavis@student.42.fr>              +#+  +:+       +#+        */
+/*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/09 14:44:25 by cpollich          #+#    #+#             */
-/*   Updated: 2019/09/30 14:38:49 by adavis           ###   ########.fr       */
+/*   Updated: 2019/09/30 21:06:07 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,5 +108,6 @@ void				create_paths(t_lemin *lem);
 void				error_manager(t_lemin *lem, int error);
 
 int					remove_from_smezh(t_room *room, t_lemin *lem);
+t_rooms				*is_same_lvl(int lvl, t_rooms *head);
 
 #endif

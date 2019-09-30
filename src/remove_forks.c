@@ -6,7 +6,7 @@
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/26 21:38:31 by cpollich          #+#    #+#             */
-/*   Updated: 2019/09/30 20:42:57 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/09/30 21:19:48 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,14 +73,36 @@ void		remove_output_forks(t_lemin *lem)
 	while (--lvl > 0)
 	{
 		rooms = lem->list;
-		while (rooms)
+		while ((rooms = is_same_lvl(lvl, rooms)))
 		{
-			if (rooms->room->level == lvl && rooms->room->out > 1)
-				clean_outs(lem, rooms->room->index);
+			clean_outs(lem, rooms->room->index);
 			rooms = rooms->next;
 		}
 	}
 }
+
+/*
+**	void		remove_output_forks(t_lemin *lem)
+**	{
+**		int		lvl;
+**		t_rooms	*rooms;
+**		t_rooms	*tmp;
+**
+**		if (!(tmp = find_final_room(lem)))
+**			return ;
+**		lvl = find_final_room(lem)->room->level + 1;
+**		while (--lvl > 0)
+**		{
+**			rooms = lem->list;
+**			while (rooms)
+**			{
+**				if (rooms->room->level == lvl && rooms->room->out > 1)
+**					clean_outs(lem, rooms->room->index);
+**				rooms = rooms->next;
+**			}
+**		}
+**	}
+*/
 
 void		remove_input_forks(t_lemin *lem)
 {
