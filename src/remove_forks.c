@@ -6,7 +6,7 @@
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/26 21:38:31 by cpollich          #+#    #+#             */
-/*   Updated: 2019/09/30 18:33:09 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/09/30 20:42:57 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void		remove_output_forks(t_lemin *lem)
 	t_rooms	*tmp;
 
 	if (!(tmp = find_final_room(lem)))
-		exit(-1);
+		return ;
 	lvl = find_final_room(lem)->room->level + 1;
 	while (--lvl > 0)
 	{
@@ -91,9 +91,8 @@ void		remove_input_forks(t_lemin *lem)
 	t_rooms	*tmp;
 
 	cl = 0;
-	while ((tmp = find_final_room(lem)) && ++cl <= tmp->room->level)
-	{
-		rooms = lem->list;
+	while ((tmp = find_final_room(lem)) && ++cl <= tmp->room->level
+		&& (rooms = lem->list))
 		while (rooms)
 		{
 			if (rooms->room->level == cl && rooms->room->in > 1)
@@ -101,20 +100,17 @@ void		remove_input_forks(t_lemin *lem)
 				ri = rooms->room->index;
 				i = -1;
 				while (++i < lem->size)
-				{
 					if (lem->smezh[i][ri] && find_room_ind(i, lem)->out > 1)
 					{
 						lem->smezh[i][ri] = 0;
 						rooms->room->in -= 1;
 					}
-				}
 			}
 			rooms = rooms->next;
 		}
-	}
 }
 
-void	remove_input_forks_dumb(t_lemin *lem)
+void		remove_input_forks_dumb(t_lemin *lem)
 {
 	t_rooms	*rooms;
 	int		ri;
@@ -123,9 +119,8 @@ void	remove_input_forks_dumb(t_lemin *lem)
 	t_rooms	*tmp;
 
 	cl = 0;
-	while ((tmp = find_final_room(lem)) && ++cl <= tmp->room->level)
-	{
-		rooms = lem->list;
+	while ((tmp = find_final_room(lem)) && ++cl <= tmp->room->level
+			&& (rooms = lem->list))
 		while (rooms)
 		{
 			if (rooms->room->level == cl && rooms->room->in > 1)
@@ -133,16 +128,13 @@ void	remove_input_forks_dumb(t_lemin *lem)
 				ri = rooms->room->index;
 				i = -1;
 				while (++i < lem->size)
-				{
 					if (lem->smezh[i][ri] && rooms->room->in > 1)
 					{
 						printf(">%d\n", rooms->room->in);
 						remove_from_smezh(find_room_ind(i, lem), lem);
 						rooms->room->in -= 1;
 					}
-				}
 			}
 			rooms = rooms->next;
 		}
-	}
 }
