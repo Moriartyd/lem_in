@@ -3,7 +3,7 @@ from nodes import Node
 from time import sleep
 from math import sqrt
 from random import randint
-import gc
+import os
 
 def create_node(node, radius):
 	try:
@@ -21,7 +21,7 @@ def draw_nodes(nodes, radius, win):
 		elif node.end:
 			n['circle'].setFill(color_rgb(191, 76, 69))
 		else:
-			n['circle'].setFill(color_rgb(54, 56, 60))
+			n['circle'].setFill(color_rgb(30, 30, 30))
 		n['circle'].setOutline('white')
 		n['text'].setFill('white')
 		try:
@@ -46,8 +46,11 @@ def create_link(link, nodes):
 
 def draw_links(links, nodes, win):
 	for link in links:
-		link = create_link(link, nodes)
-		link.setFill(color_rgb(54, 56, 60))
+		try:
+			link = create_link(link, nodes)
+		except UnboundLocalError:
+			exit('Invalid input.')
+		link.setFill('white')
 		try:
 			link.draw(win)
 		except GraphicsError:
@@ -190,6 +193,8 @@ def main():
 	width, height = calc_size(coords, nodes, 100)
 	win = GraphWin('lem-in', width, height, autoflush = False)
 	win.setBackground(color_rgb(8, 17, 23))
+	Image(Point(width / 2, height / 2),
+		os.path.dirname(os.path.realpath(__file__)) + '/bg.gif').draw(win)
 	win.update()
 	radius = 1120 / sqrt((len(nodes) + 10) * 4) / 3
 	draw_links(links, nodes, win)
