@@ -6,7 +6,7 @@
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/23 17:27:54 by cpollich          #+#    #+#             */
-/*   Updated: 2019/09/30 17:25:06 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/09/30 17:49:41 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,20 +42,18 @@ int				parse_input(t_lemin *lem, char *n)
 	int		ret;
 	char	buff[1];
 
-	if (!lem || (p[0] = !n ? 0 : open(n, O_RDONLY)) < 0|| read(p[0], buff, 0))
+	if (!lem || (p[0] = !n ? 0 : open(n, O_RDONLY)) < 0 || read(p[0], buff, 0))
 		return (-1);
 	p[2] = 0;
 	p[1] = 0;
 	p[3] = 0;
 	output = "";
-	ret = 0;
-	while ((ret = ft_gnl(p[0], &line)) > 0 && p[1] >= 0)
+	while (ft_gnl(p[0], &line) > 0 && p[1] >= 0)
 	{
 		ret = what_parse(line, lem, p, &output);
 		if (ret < 0)
-			return (ret);
+			return (ret - ft_strdel(&output) + 1);
 	}
-	*line ? ft_strdel(&line) : (0);
 	close(p[0]);
 	if (check_lem(lem) == -2)
 		return (-2);
