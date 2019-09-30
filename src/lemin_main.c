@@ -6,7 +6,7 @@
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/09 21:59:53 by cpollich          #+#    #+#             */
-/*   Updated: 2019/09/30 17:51:34 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/09/30 20:31:06 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,30 +14,25 @@
 #include <stdio.h>
 #include <errno.h>
 
-int	main(int argc, char **argv)
+int	main(int ac, char **argv)
 {
 	t_lemin		*lem;
-	int			res;
 
-	res = 0;
-	lem = (t_lemin *)ft_memalloc(sizeof(t_lemin));
-	argc = 0;
-	if ((res = parse_input(lem, argv[1])) < 0)
-	{
-		error_manager(lem, res);
-		mem_clean(lem);
-		return (1);
-	}
+	ac = 0;
+	if (!(lem = (t_lemin *)ft_memalloc(sizeof(t_lemin))))
+		ft_putstr_fd("Error: programm can't allocate memory\n", 2);
 	else
 	{
-		if (check_startend(lem) == -1)
+		if ((ac = parse_input(lem, argv[1])) < 0 || check_startend(lem) == -1)
 		{
-			perror(argv[0]);
+			check_startend(lem) < 0 ? perror("Error") : error_manager(lem, ac);
 			mem_clean(lem);
-			return (1);
 		}
-		bfs(lem);
-		mem_clean(lem);
-		return (0);
+		else
+		{
+			bfs(lem);
+			mem_clean(lem);
+		}
 	}
+	return (0);
 }

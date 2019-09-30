@@ -6,7 +6,7 @@
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 17:20:52 by cpollich          #+#    #+#             */
-/*   Updated: 2019/09/24 13:56:20 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/09/30 20:25:38 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ char				**ft_strsplit(char const *s, char c);
 int					ft_putchar(char c);
 void				ft_putchar_fd(char c, int fd);
 int					ft_putstr(char const *str);
-void				ft_putstr_fd(char const *str, int fd);
+int					ft_putstr_fd(char const *str, int fd);
 void				ft_putendl(char const *s);
 void				ft_putendl_fd(char const *s, int fd);
 void				ft_putnbr(int n);

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: cpollich <cpollich@student.21-school.ru    +#+  +:+       +#+         #
+#    By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/09 13:09:12 by cpollich          #+#    #+#              #
-#    Updated: 2019/09/29 19:05:12 by cpollich         ###   ########.fr        #
+#    Updated: 2019/09/30 21:21:03 by cpollich         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,7 +63,9 @@ re: fclean all
 test: $(LIBFT) $(SRC_DIR)/*.c main.c
 	gcc -g $F main.c src/* -I./inc -I./libft/inc libft/libft.a -o test
 
+norm:
+	@norminette src/*
 rm:
 	rm -Rf test* *.dSYM
 
-.PHONY: all clean fclean re test
+.PHONY: all clean fclean re test norm rm
