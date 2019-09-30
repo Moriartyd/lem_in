@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   arrays.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
+/*   By: adavis <adavis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/30 21:37:19 by cpollich          #+#    #+#             */
-/*   Updated: 2019/09/30 21:51:29 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/09/30 22:01:58 by adavis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static int	ft_len(int *arr)
 	return (len);
 }
 
-static void	ft_swap(int **a, int **b)
+static void	ft_swaptab(int **a, int **b)
 {
 	int	*tmp;
 
@@ -43,7 +43,7 @@ void		sort_array(int **arr, int len)
 		while (j < len)
 		{
 			if (ft_len(arr[i]) < ft_len(arr[j]))
-				ft_swap(arr[i], arr[j]);
+				ft_swaptab(&arr[i], &arr[j]);
 			j++;
 		}
 		i++;

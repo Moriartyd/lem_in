@@ -6,7 +6,7 @@
 /*   By: adavis <adavis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/26 21:44:23 by cpollich          #+#    #+#             */
-/*   Updated: 2019/09/30 21:31:59 by adavis           ###   ########.fr       */
+/*   Updated: 2019/09/30 22:17:53 by adavis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,12 +48,12 @@ int		*follow_path(t_lemin *lem, int i)
 	{
 		if (lem->smezh[i][j])
 		{
-			path[p] = j;
-			p++;
+			path[p++] = i;
 			i = j;
 			j = -1;
 		}
 	}
+	path[p++] = i;
 	path[p] = -1;
 	return (path);
 }
@@ -77,6 +77,7 @@ void	create_paths(t_lemin *lem)
 			p++;
 		}
 	}
+	sort_array(paths, pathscnt(lem));
 	print_paths(paths, lem);
 }
 
@@ -90,15 +91,20 @@ void	print_paths(int **paths, t_lemin *lem)
 	int		j;
 
 	i = -1;
-	while (++i < pathscnt(lem, lem->start->index))
+	while (++i < pathscnt(lem))
 	{
 		j = -1;
 		while (paths[i][++j] != -1)
 		{
-			printf("%s ", find_room_ind(paths[i][j], lem)->name);
+			printf("%d ", find_room_ind(paths[i][j], lem)->index);
 		}
 		printf("\n");
 	}
 }
 
-void	create_tacts()
+// void	create_tacts(int **paths, t_lemin *lem)
+// {
+// 	t_tact	*tacts;
+
+
+// }

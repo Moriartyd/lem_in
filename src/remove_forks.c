@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   remove_forks.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
+/*   By: adavis <adavis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/26 21:38:31 by cpollich          #+#    #+#             */
-/*   Updated: 2019/09/30 21:19:48 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/09/30 22:15:09 by adavis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,7 +152,6 @@ void		remove_input_forks_dumb(t_lemin *lem)
 				while (++i < lem->size)
 					if (lem->smezh[i][ri] && rooms->room->in > 1)
 					{
-						printf(">%d\n", rooms->room->in);
 						remove_from_smezh(find_room_ind(i, lem), lem);
 						rooms->room->in -= 1;
 					}
