@@ -6,7 +6,7 @@
 /*   By: adavis <adavis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/26 21:44:23 by cpollich          #+#    #+#             */
-/*   Updated: 2019/09/30 21:27:32 by adavis           ###   ########.fr       */
+/*   Updated: 2019/09/30 21:31:59 by adavis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	print_paths(int **paths, t_lemin *lem);
 **	A good (?) pathfinder
 */
 
-int		pathscnt(t_lemin *lem, int start)
+int		pathscnt(t_lemin *lem)
 {
 	int		i;
 	int		cnt;
@@ -30,7 +30,7 @@ int		pathscnt(t_lemin *lem, int start)
 	cnt = 0;
 	i = -1;
 	while (++i < lem->size)
-		if (lem->smezh[start][i])
+		if (lem->smezh[lem->start->index][i])
 			cnt++;
 	return (cnt);
 }
@@ -66,7 +66,7 @@ void	create_paths(t_lemin *lem)
 	int		**paths;
 
 	start = lem->start->index;
-	paths = (int**)malloc(sizeof(int *) * pathscnt (lem, start));
+	paths = (int**)malloc(sizeof(int *) * pathscnt(lem));
 	i = -1;
 	p = 0;
 	while (++i < lem->size)
@@ -100,3 +100,5 @@ void	print_paths(int **paths, t_lemin *lem)
 		printf("\n");
 	}
 }
+
+void	create_tacts()
