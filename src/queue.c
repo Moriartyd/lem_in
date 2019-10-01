@@ -6,24 +6,11 @@
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/24 13:20:10 by adavis            #+#    #+#             */
-/*   Updated: 2019/09/26 21:49:21 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/10/01 14:39:35 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
-
-int				q_len(t_queue *q)
-{
-	int	cnt;
-
-	cnt = 0;
-	while (q)
-	{
-		cnt++;
-		q = q->next;
-	}
-	return (cnt);
-}
 
 static t_queue	*init_queue(int index)
 {
