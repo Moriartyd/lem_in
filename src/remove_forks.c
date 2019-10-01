@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   remove_forks.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
+/*   By: adavis <adavis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/26 21:38:31 by cpollich          #+#    #+#             */
-/*   Updated: 2019/10/01 16:57:15 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/10/01 18:46:21 by adavis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,10 +100,10 @@ void		remove_output_forks(t_lemin *lem)
 void		remove_input_forks(t_lemin *lem)
 {
 	t_rooms	*rooms;
-	int		ri;
 	int		i;
 	int		cl;
 	t_rooms	*tmp;
+	t_room	*room;
 
 	cl = 0;
 	while ((tmp = find_final_room(lem)) && ++cl <= tmp->room->level
@@ -112,12 +112,13 @@ void		remove_input_forks(t_lemin *lem)
 		{
 			if (rooms->room->level == cl && rooms->room->in > 1)
 			{
-				ri = rooms->room->index;
+				room = rooms->room;
 				i = -1;
 				while (++i < lem->size)
-					if (lem->smezh[i][ri] && find_room_ind(i, lem)->out > 1)
+					if (lem->smezh[i][room->index] &&
+							find_room_ind(i, lem)->out > 1 && room->in > 1)
 					{
-						lem->smezh[i][ri] = 0;
+						lem->smezh[i][room->index] = 0;
 						rooms->room->in -= 1;
 					}
 			}

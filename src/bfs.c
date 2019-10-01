@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bfs.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
+/*   By: adavis <adavis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/24 13:15:40 by adavis            #+#    #+#             */
-/*   Updated: 2019/10/01 18:26:09 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/10/01 18:45:16 by adavis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,15 +116,10 @@ static void	count_in_out(t_lemin *lem)
 		rooms = rooms->next;
 	}
 	remove_deadends(lem);
-	ft_printf("1\n");
 	remove_input_forks(lem);
-	ft_printf("2\n");
 	remove_input_forks_dumb(lem);
-	ft_printf("3\n");
 	remove_deadends(lem);
-	ft_printf("4\n");
 	remove_output_forks(lem);
-	ft_printf("5\n");
 	create_paths(lem);
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   paths.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
+/*   By: adavis <adavis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/26 21:44:23 by cpollich          #+#    #+#             */
-/*   Updated: 2019/10/01 18:28:54 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/10/01 18:38:12 by adavis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ int		*follow_path(t_lemin *lem, int i)
 			i = j;
 			j = -1;
 		}
-		ft_printf("room i=%s, j=%s\n", find_room_ind(i, lem)->name, find_room_ind(j, lem)->name);
 	}
 	path[p++] = i;
 	path[p] = -1;
