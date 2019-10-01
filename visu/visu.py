@@ -3,7 +3,6 @@ from nodes import Node
 from time import sleep
 from math import sqrt
 from random import randint
-import os
 
 def create_node(node, radius):
 	try:
