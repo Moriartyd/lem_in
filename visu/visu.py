@@ -203,7 +203,7 @@ def main():
 		win.update()
 		try:
 			win.getMouse()
-		except (GraphicsError, KeyboardInterrupt):
+		except GraphicsError:
 			exit()
 		for tact in ants_tacts:
 			move_ants(ants, tact, nodes, win)
@@ -211,9 +211,12 @@ def main():
 	try:
 		while win.getKey() != 'Escape':
 			pass
-	except (GraphicsError, KeyboardInterrupt):
+	except GraphicsError:
 		pass
 	exit()
 
 if __name__ == '__main__':
-	main()
+	try:
+		main()
+	except KeyboardInterrupt:
+		exit()
