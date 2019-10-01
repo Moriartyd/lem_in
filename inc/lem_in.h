@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lem_in.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
+/*   By: adavis <adavis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/09 14:44:25 by cpollich          #+#    #+#             */
-/*   Updated: 2019/09/30 21:51:14 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/10/01 13:47:11 by adavis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,12 @@ typedef struct 		s_stack
 	struct s_stack	*next;
 }					t_stack;
 
+typedef struct		s_ant
+{
+	int				path;
+	int				room;
+}					t_ant;
+
 
 int					parse_input(t_lemin *lem, char *name);
 int					what_parse(char *line, t_lemin *lem,
@@ -110,5 +116,8 @@ void				error_manager(t_lemin *lem, int error);
 int					remove_from_smezh(t_room *room, t_lemin *lem);
 t_rooms				*is_same_lvl(int lvl, t_rooms *head);
 void				sort_array(int **arr, int len);
+
+int					pathscnt(t_lemin *lem);
+int					*weigh_paths(int **paths, t_lemin *lem);
 
 #endif
