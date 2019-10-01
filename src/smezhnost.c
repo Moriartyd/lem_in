@@ -6,7 +6,7 @@
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/13 15:01:04 by cpollich          #+#    #+#             */
-/*   Updated: 2019/09/26 22:19:51 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/10/01 21:31:09 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,12 @@ static int	add_smezh(char *name1, char *name2, t_lemin *lem)
 	t_rooms	*rooms2;
 
 	if (!name1 || !name2)
-		return (-1);
+		return (-3);
 	arr = lem->smezh;
 	rooms1 = find_room(name1, lem);
 	rooms2 = find_room(name2, lem);
 	if (!rooms1 || !rooms2)
-		return (-1);
+		return (-3);
 	ind1 = rooms1->room->index;
 	ind2 = rooms2->room->index;
 	if (arr[ind1][ind2] || arr[ind2][ind1])

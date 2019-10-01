@@ -6,7 +6,7 @@
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/09 16:27:45 by cpollich          #+#    #+#             */
-/*   Updated: 2019/10/01 19:03:39 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/10/01 21:46:28 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,13 +47,16 @@ t_room	*rm_room(t_room *room)
 
 void	mem_clean(t_lemin *lem)
 {
-	lem->list = rm_rooms(lem->list);
-	lem->ants = 0;
-	lem->end = NULL;
-	lem->start = NULL;
-	ft_doublematrixdel(&(lem->smezh), lem->size);
-	lem->size = 0;
-	free(lem);
+	if (lem)
+	{
+		lem->list = lem->list ? rm_rooms(lem->list) : (0);
+		lem->ants = 0;
+		lem->end = NULL;
+		lem->start = NULL;
+		ft_doublematrixdel(&(lem->smezh), lem->size);
+		lem->size = 0;
+		free(lem);
+	}
 }
 
 int		valid_room(t_room *room1, t_room *room2)
