@@ -6,7 +6,7 @@
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/26 21:44:23 by cpollich          #+#    #+#             */
-/*   Updated: 2019/10/01 15:04:19 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/10/01 15:50:27 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,6 @@
 
 /*
 **	Debug print
-*/
-
-void	print_paths(int **paths, t_lemin *lem);
-
-/*
-**	A good (?) pathfinder
 */
 
 int		pathscnt(t_lemin *lem)
@@ -58,6 +52,24 @@ int		*follow_path(t_lemin *lem, int i)
 	return (path);
 }
 
+static void	remove_path(int ***p, t_lemin *lem)
+{
+	int	i;
+
+	if(p && *p)
+	{
+		i = 0;
+		while (i < pathscnt(lem))
+		{
+			free(*p[i]);
+			*p[i] = NULL;
+			i++;
+		}
+		free(*p);
+		*p = NULL;
+	}
+}
+
 void	create_paths(t_lemin *lem)
 {
 	int		i;
@@ -78,8 +90,8 @@ void	create_paths(t_lemin *lem)
 		}
 	}
 	sort_array(paths, pathscnt(lem));
-	// print_paths(paths, lem);
 	move_ants(paths, weigh_paths(paths, lem), lem);
+	remove_path(&paths, lem);
 }
 
 /*

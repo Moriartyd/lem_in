@@ -6,26 +6,11 @@
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/01 13:25:43 by adavis            #+#    #+#             */
-/*   Updated: 2019/10/01 15:17:12 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/10/01 15:42:43 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
-
-t_ant	*create_ants(t_lemin *lem)
-{
-	t_ant	*ants;
-	int		i;
-
-	ants = (t_ant *)malloc(sizeof(t_ant) * lem->ants);
-	i = -1;
-	while (++i < lem->ants)
-	{
-		ants[i].room = lem->start->index;
-		ants[i].path = -1;
-	}
-	return (ants);
-}
 
 int		ants_remaining(t_ant *ants, t_lemin *lem)
 {
@@ -86,20 +71,8 @@ void	move_ants(int **paths, int *weights, t_lemin *lem)
 		perform_move(ants, paths, lem);
 		ft_printf("\n");
 	}
-}
-
-int		*init_weights(int cnt)
-{
-	int		*weights;
-	int		i;
-
-	weights = (int *)malloc(sizeof(int) * cnt);
-	i = -1;
-	while (++i < cnt)
-	{
-		weights[i] = 0;
-	}
-	return (weights);
+	ants = remove_ants(&ants);
+	weights = remove_weights(&weights);
 }
 
 int		weigh_path(int **paths, t_lemin *lem, int ind, int len)

@@ -6,7 +6,7 @@
 #    By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/09 13:09:12 by cpollich          #+#    #+#              #
-#    Updated: 2019/10/01 14:44:42 by cpollich         ###   ########.fr        #
+#    Updated: 2019/10/01 15:43:16 by cpollich         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ SRC	=	parse_input.c parse_input2.c	\
 		find_levels.c 					\
 		pathlen.c paths.c remove_forks.c\
 		arrays.c						\
-		moves.c
+		moves.c ants_memory.c path_memory.c\
 
 all: $(NAME)
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lem_in.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adavis <adavis@student.42.fr>              +#+  +:+       +#+        */
+/*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/09 14:44:25 by cpollich          #+#    #+#             */
-/*   Updated: 2019/10/01 14:55:06 by adavis           ###   ########.fr       */
+/*   Updated: 2019/10/01 15:40:24 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,6 +147,19 @@ int					pathlen(t_lemin *lem, int index);
 int					pathscnt(t_lemin *lem);
 int					*weigh_paths(int **paths, t_lemin *lem);
 void				move_ants(int **paths, int *weights, t_lemin *lem);
+
+/*
+**	Ants memory
+*/
+t_ant				*create_ants(t_lemin *lem);
+t_ant   			*remove_ants(t_ant **ant);
+
+/*
+**	Weights memory
+*/
+int					*init_weights(int cnt);
+int					*remove_weights(int **w);
+
 
 /*
 **	Other
