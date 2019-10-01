@@ -6,14 +6,18 @@
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/24 13:15:40 by adavis            #+#    #+#             */
-/*   Updated: 2019/09/30 21:20:08 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/10/01 14:44:01 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 #include <stdio.h>
 
-void	print_levels(t_lemin *lem)
+/*
+**	DEBUG PRINT
+*/
+
+void		print_levels(t_lemin *lem)
 {
 	while (lem->list)
 	{
@@ -22,11 +26,7 @@ void	print_levels(t_lemin *lem)
 	}
 }
 
-/*
-**	DEBUG PRINT
-*/
-
-void	print_smezh(t_lemin *lem)
+void		print_smezh(t_lemin *lem)
 {
 	int		i;
 	int		j;
@@ -50,7 +50,7 @@ void	print_smezh(t_lemin *lem)
 	}
 }
 
-int		remove_from_smezh(t_room *room, t_lemin *lem)
+int			remove_from_smezh(t_room *room, t_lemin *lem)
 {
 	int		i;
 
@@ -68,7 +68,7 @@ int		remove_from_smezh(t_room *room, t_lemin *lem)
 	return (1);
 }
 
-void	remove_deadends(t_lemin *lem)
+static void	remove_deadends(t_lemin *lem)
 {
 	t_room	*room;
 	int		all_clear;
@@ -101,7 +101,7 @@ void	remove_deadends(t_lemin *lem)
 **	IN	- vertical
 */
 
-void	count_in_out(t_lemin *lem)
+static void	count_in_out(t_lemin *lem)
 {
 	int		index;
 	int		i;
@@ -122,7 +122,7 @@ void	count_in_out(t_lemin *lem)
 	remove_deadends(lem);
 }
 
-void	remove_links(t_lemin *lem)
+static void	remove_links(t_lemin *lem)
 {
 	int		i;
 	int		j;
@@ -147,7 +147,7 @@ void	remove_links(t_lemin *lem)
 	count_in_out(lem);
 }
 
-void	bfs(t_lemin *lem)
+void		bfs(t_lemin *lem)
 {
 	t_queue	*q;
 	int		i;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   remove_forks.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adavis <adavis@student.42.fr>              +#+  +:+       +#+        */
+/*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/26 21:38:31 by cpollich          #+#    #+#             */
-/*   Updated: 2019/09/30 22:15:09 by adavis           ###   ########.fr       */
+/*   Updated: 2019/10/01 14:34:03 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,10 +56,6 @@ static void	clean_outs(t_lemin *lem, int index)
 		}
 	}
 }
-
-/*
-**	гавно и жопа снизу
-*/
 
 void		remove_output_forks(t_lemin *lem)
 {
