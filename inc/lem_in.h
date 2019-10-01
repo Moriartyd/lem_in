@@ -6,7 +6,7 @@
 /*   By: adavis <adavis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/09 14:44:25 by cpollich          #+#    #+#             */
-/*   Updated: 2019/10/01 13:47:11 by adavis           ###   ########.fr       */
+/*   Updated: 2019/10/01 14:22:43 by adavis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ typedef struct		s_rooms
 
 typedef struct		s_lemin
 {
-	unsigned		ants;
+	int				ants;
 	t_room			*start;
 	t_rooms			*list;
 	t_room			*end;
@@ -119,5 +119,6 @@ void				sort_array(int **arr, int len);
 
 int					pathscnt(t_lemin *lem);
 int					*weigh_paths(int **paths, t_lemin *lem);
+void				move_ants(int **paths, int *weights, t_lemin *lem);
 
 #endif

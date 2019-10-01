@@ -6,52 +6,85 @@
 /*   By: adavis <adavis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/01 13:25:43 by adavis            #+#    #+#             */
-/*   Updated: 2019/10/01 14:13:25 by adavis           ###   ########.fr       */
+/*   Updated: 2019/10/01 14:51:18 by adavis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-// t_ant	*create_ants(t_lemin *lem)
-// {
-// 	t_ant	ants[lem->ants];
-// 	int		i;
+t_ant	*create_ants(t_lemin *lem)
+{
+	t_ant	*ants;
+	int		i;
 
-// 	i = -1;
-// 	while (++i < lem->ants)
-// 	{
-// 		ants[i].room = lem->start->index;
-// 		ants[i].path = -1;
-// 	}
-// 	return (ants);
-// }
+	ants = (t_ant *)malloc(sizeof(t_ant) * lem->ants);
+	i = -1;
+	while (++i < lem->ants)
+	{
+		ants[i].room = lem->start->index;
+		ants[i].path = -1;
+	}
+	return (ants);
+}
 
-// int		ants_remaining(t_ant *ants, t_lemin *lem)
-// {
-// 	int		i;
-// 	int		cnt;
+int		ants_remaining(t_ant *ants, t_lemin *lem)
+{
+	int		i;
+	int		cnt;
 
-// 	cnt = 0;
-// 	i = -1;
-// 	while (i < lem->ants)
-// 		if (ants[i].room != lem->end->index)
-// 			cnt++;
-// 	return (cnt);
-// }
+	cnt = 0;
+	i = -1;
+	while (++i < lem->ants)
+		if (ants[i].room != lem->end->index)
+			cnt++;
+	return (cnt);
+}
 
-// void	move_ants(int **paths, t_lemin *lem)
-// {
-// 	t_ant	*ants;
-// 	int		i;
-// 	int		j;
+void	perform_move(t_ant *ants, int **paths, t_lemin *lem)
+{
+	int		i;
+	int		j;
 
-// 	ants = create_ants(lem);
-// 	i = 0;
-// 	while (ants_remaining(ants, lem))
-// 	{
-// 		j = -1;
-// 	}
-// }
+	i = -1;
+	while (++i < lem->ants)
+	{
+		if (ants[i].path >= 0 && ants[i].room != lem->end->index)
+		{
+			j = 0;
+			if (ants[i].room != lem->start->index)
+				while (paths[ants[i].path][j++] != ants[i].room)
+					;
+			ants[i].room = paths[ants[i].path][j];
+			printf("L%d-%d ", i + 1, ants[i].room);
+		}
+	}
+}
+
+void	move_ants(int **paths, int *weights, t_lemin *lem)
+{
+	t_ant	*ants;
+	int		i;
+	int		j;
+
+	if (paths == &weights)
+		i = 0;
+	ants = create_ants(lem);
+	i = 0;
+	printf("\n");
+	while (ants_remaining(ants, lem))
+	{
+		j = -1;
+		while (++j < pathscnt(lem))
+		{
+			if (ants_remaining(ants, lem) > weights[j])
+			{
+				ants[i++].path = j;
+			}
+		}
+		perform_move(ants, paths, lem);
+		printf("\n");
+	}
+}
 
 int		*init_weights(int cnt)
 {
