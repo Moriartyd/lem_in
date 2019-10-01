@@ -6,7 +6,7 @@
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/09 15:18:04 by cpollich          #+#    #+#             */
-/*   Updated: 2019/10/01 17:32:21 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/10/01 19:57:57 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static int		get_type(char *str)
 		return (1);
 	else if (str[0] == '#' && str[1] == '#' && !ft_strcmp(str + 2, "end"))
 		return (2);
-	else if (ft_strchr(str, '-') && str[0] != '#')
+	else if (ft_strchr(str, '-') && str[0] != '#' && str[0] != '-')
 		return (3);
 	else if (str[0] == '#')
 		return (0);
@@ -40,7 +40,7 @@ static t_room	*parse_room(char *line, t_lemin *lem, int *status, int *ind)
 	size = ft_strchr(line, ' ') - line;
 	if (!(room = create_room(size, ind)))
 		return (NULL);
-	set_coord(room, line + size);
+	*status = !set_coord(room, line + size) ? (-5) : (4);
 	ft_strncpy(room->name, line, size);
 	if (!lem->list)
 		return (!(lem->list = create_firstrooms(room)) ? NULL : room);
@@ -51,7 +51,7 @@ static t_room	*parse_room(char *line, t_lemin *lem, int *status, int *ind)
 	check ? check = valid_room(room, head->room) : (0);
 	if (!(head->next = add_rooms(head, room)))
 		return (NULL);
-	*status = check ? 4 : -4;
+	*status = check && *status > 0 ? 4 : -4;
 	lem->size = *ind;
 	return ((check) ? (room) : (NULL));
 }
@@ -59,7 +59,10 @@ static t_room	*parse_room(char *line, t_lemin *lem, int *status, int *ind)
 static void		parse_ants(char *line, t_lemin *lem, int *status)
 {
 	lem->ants = ft_atoi(line);
-	*status = 4;
+	if (lem->ants < 0)
+		*status = -5;
+	else
+		*status = 4;
 }
 
 static int		parse_command(t_lemin *lem, int *p, char **addline)
@@ -68,12 +71,12 @@ static int		parse_command(t_lemin *lem, int *p, char **addline)
 	int		s;
 	int		ret;
 
-	ret = 5;
+	ret = -7;
 	if (ft_gnl(p[0], &line) < 0)
 		return (-ft_strdel(&line));
 	s = get_type(line);
-	if (s != 4)
-		return (-ft_strdel(&line));
+	if (s != 4 && s != -1)
+		return (-ft_strdel(&line) - 6);
 	if (s == 4)
 	{
 		if (p[1] == 1 && !lem->start)
@@ -82,7 +85,7 @@ static int		parse_command(t_lemin *lem, int *p, char **addline)
 		if (p[1] == 2 && !lem->end)
 			if (!(lem->end = parse_room(line, lem, &ret, &p[3])))
 				return (-ft_strdel(&line));
-		ret = 5;
+		ret = ret < 0 ? ret : 5;
 		line = ft_strjoinch(&line, '\n');
 		*addline = ft_stradd(*addline, line);
 	}

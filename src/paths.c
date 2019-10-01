@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   paths.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adavis <adavis@student.42.fr>              +#+  +:+       +#+        */
+/*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/26 21:44:23 by cpollich          #+#    #+#             */
-/*   Updated: 2019/10/01 18:38:12 by adavis           ###   ########.fr       */
+/*   Updated: 2019/10/01 20:17:46 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 **	Debug print
 */
 
-int		pathscnt(t_lemin *lem)
+int			pathscnt(t_lemin *lem)
 {
 	int		i;
 	int		cnt;
@@ -29,7 +29,7 @@ int		pathscnt(t_lemin *lem)
 	return (cnt);
 }
 
-int		*follow_path(t_lemin *lem, int i)
+int			*follow_path(t_lemin *lem, int i)
 {
 	int		j;
 	int		p;
@@ -57,7 +57,7 @@ static void	remove_path(int **p, t_lemin *lem)
 	int	i;
 	int	len;
 
-	if(p && *p)
+	if (p && *p)
 	{
 		len = pathscnt(lem);
 		i = 0;
@@ -72,7 +72,7 @@ static void	remove_path(int **p, t_lemin *lem)
 	}
 }
 
-void	create_paths(t_lemin *lem)
+void		create_paths(t_lemin *lem)
 {
 	int		i;
 	int		p;
@@ -100,7 +100,7 @@ void	create_paths(t_lemin *lem)
 **	Debug print
 */
 
-void	print_paths(int **paths, t_lemin *lem)
+void		print_paths(int **paths, t_lemin *lem)
 {
 	int		i;
 	int		j;

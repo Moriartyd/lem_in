@@ -6,13 +6,13 @@
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/23 17:27:54 by cpollich          #+#    #+#             */
-/*   Updated: 2019/10/01 18:08:41 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/10/01 20:16:38 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-static int		set_startend(t_lemin *lem)
+static int	set_startend(t_lemin *lem)
 {
 	if (lem->start)
 		lem->start->level = 0;
@@ -21,7 +21,7 @@ static int		set_startend(t_lemin *lem)
 	return (0);
 }
 
-int		isint(char *str)
+int			isint(char *str)
 {
 	int		neg;
 	char	*s;
@@ -60,10 +60,11 @@ int		isint(char *str)
 **	-2	- error with lem
 **	-3	- error with links
 **	-4	- error with room
+**	-6	- error with coords
 **	0	- comment
 */
 
-int				parse_input(t_lemin *lem, char *n)
+int			parse_input(t_lemin *lem, char *n)
 {
 	char	*line;
 	char	*output;
@@ -71,12 +72,12 @@ int				parse_input(t_lemin *lem, char *n)
 	int		ret;
 	char	buff[1];
 
+	output = ft_strnew(0);
 	if (!lem || (p[0] = !n ? 0 : open(n, O_RDONLY)) < 0 || read(p[0], buff, 0))
 		return (-1);
 	p[2] = 0;
 	p[1] = 0;
 	p[3] = 0;
-	output = ft_strnew(0);
 	while (ft_gnl(p[0], &line) > 0 && p[1] >= 0)
 	{
 		ret = what_parse(line, lem, p, &output);
@@ -84,8 +85,8 @@ int				parse_input(t_lemin *lem, char *n)
 			return (ret - ft_strdel(&output) + 1);
 	}
 	close(p[0]);
-	if (check_lem(lem) == -2)
-		return (-2);
+	if (check_lem(lem) != 0)
+		return (check_lem(lem));
 	ft_putstr(output);
 	set_startend(lem);
 	ft_strdel(&output);

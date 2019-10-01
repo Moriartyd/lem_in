@@ -6,7 +6,7 @@
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/09 21:59:53 by cpollich          #+#    #+#             */
-/*   Updated: 2019/10/01 17:33:57 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/10/01 19:30:01 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ int	main(int ac, char **argv)
 		ft_putstr_fd("Error: programm can't allocate memory\n", 2);
 	else
 	{
-		if ((ac = parse_input(lem, argv[1])) < 0 || check_startend(lem) == -1)
+		if ((ac = parse_input(lem, argv[1])) < 0)
 		{
-			ac > 0 || ac == -5 ? perror("Error") : (0);
+			ac > 0 ? perror("Error") : error_manager(ac);
 			mem_clean(lem);
 		}
 		else
