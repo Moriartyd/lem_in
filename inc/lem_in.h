@@ -6,7 +6,7 @@
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/09 14:44:25 by cpollich          #+#    #+#             */
-/*   Updated: 2019/10/01 18:05:53 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/10/01 20:18:56 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ int					parse_input(t_lemin *lem, char *name);
 int					what_parse(char *line, t_lemin *lem,
 						int *p, char **addline);
 int					**create_smezh(t_lemin *lem);
-void				set_coord(t_room *room, char *line);
+int					set_coord(t_room *room, char *line);
 void				parse_link(char *str, t_lemin *lem, int *stat);
 
 /*
@@ -119,7 +119,7 @@ t_rooms				*find_final_room(t_lemin *lem);
 /*
 **	Errors
 */
-void				error_manager(t_lemin *lem, int error);
+void				error_manager(int error);
 int					check_startend(t_lemin *lem);
 int					check_lem(t_lemin *lem);
 
@@ -153,14 +153,13 @@ void				move_ants(int **paths, int *weights, t_lemin *lem);
 **	Ants memory
 */
 t_ant				*create_ants(t_lemin *lem);
-t_ant   			*remove_ants(t_ant **ant);
+t_ant				*remove_ants(t_ant **ant);
 
 /*
 **	Weights memory
 */
 int					*init_weights(int cnt);
 int					*remove_weights(int **w);
-
 
 /*
 **	Other

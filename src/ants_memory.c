@@ -6,7 +6,7 @@
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/01 15:28:23 by cpollich          #+#    #+#             */
-/*   Updated: 2019/10/01 15:38:40 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/10/01 20:13:39 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,13 @@ t_ant	*create_ants(t_lemin *lem)
 	}
 	return (ants);
 }
-t_ant   *remove_ants(t_ant **ant)
+
+t_ant	*remove_ants(t_ant **ant)
 {
-    if (ant && *ant)
+	if (ant && *ant)
 	{
-    	free(*ant);
-    	*ant = NULL;
+		free(*ant);
+		*ant = NULL;
 	}
-    return (NULL);
+	return (NULL);
 }

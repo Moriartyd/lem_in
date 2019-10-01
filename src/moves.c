@@ -6,7 +6,7 @@
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/01 13:25:43 by adavis            #+#    #+#             */
-/*   Updated: 2019/10/01 16:18:36 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/10/01 20:14:43 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,6 @@ int		*weigh_paths(int **paths, t_lemin *lem)
 	weights = init_weights(pathscnt(lem));
 	i = -1;
 	while (++i < pathscnt(lem))
-		weights[i] = weigh_path(paths, lem,  i, pathlen(lem, paths[i][0]));
+		weights[i] = weigh_path(paths, lem, i, pathlen(lem, paths[i][0]));
 	return (weights);
 }
