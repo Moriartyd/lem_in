@@ -6,7 +6,7 @@
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/01 13:25:43 by adavis            #+#    #+#             */
-/*   Updated: 2019/10/01 15:42:43 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/10/01 15:55:04 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	perform_move(t_ant *ants, int **paths, t_lemin *lem)
 					;
 			ants[i].room = paths[ants[i].path][j];
 			ft_printf("L%d-%s", i + 1, find_room_ind(ants[i].room, lem)->name);
-			if (i < lem->ants)
+			if (ants[i + 1].path >= 0 && i + 1 < lem->ants)
 				ft_printf(" ");
 		}
 	}
