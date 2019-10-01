@@ -6,7 +6,7 @@
 /*   By: adavis <adavis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/01 13:25:43 by adavis            #+#    #+#             */
-/*   Updated: 2019/10/01 14:51:18 by adavis           ###   ########.fr       */
+/*   Updated: 2019/10/01 14:59:57 by adavis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,9 @@ void	perform_move(t_ant *ants, int **paths, t_lemin *lem)
 				while (paths[ants[i].path][j++] != ants[i].room)
 					;
 			ants[i].room = paths[ants[i].path][j];
-			printf("L%d-%d ", i + 1, ants[i].room);
+			ft_printf("L%d-%s", i + 1, find_room_ind(ants[i].room, lem)->name);
+			if (i < lem->ants)
+				ft_printf(" ");
 		}
 	}
 }
@@ -82,7 +84,7 @@ void	move_ants(int **paths, int *weights, t_lemin *lem)
 			}
 		}
 		perform_move(ants, paths, lem);
-		printf("\n");
+		ft_printf("\n");
 	}
 }
 
