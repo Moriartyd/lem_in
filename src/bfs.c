@@ -6,7 +6,7 @@
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/24 13:15:40 by adavis            #+#    #+#             */
-/*   Updated: 2019/10/01 15:04:06 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/10/01 18:26:09 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,29 +26,29 @@
 // 	}
 // }
 
-// void		print_smezh(t_lemin *lem)
-// {
-// 	int		i;
-// 	int		j;
+void		print_smezh(t_lemin *lem)
+{
+	int		i;
+	int		j;
 
-// 	i = 0;
-// 	while (i++ < lem->size * 2 + 16)
-// 		printf("-");
-// 	printf("\n");
-// 	i = 0;
-// 	while (i < lem->size)
-// 	{
-// 		printf("%16s\t", find_room_ind(i, lem)->name);
-// 		j = 0;
-// 		while (j < lem->size)
-// 		{
-// 			printf("%d ", lem->smezh[i][j]);
-// 			j++;
-// 		}
-// 		printf("\n");
-// 		i++;
-// 	}
-// }
+	i = 0;
+	while (i++ < lem->size * 2 + 16)
+		printf("-");
+	printf("\n");
+	i = 0;
+	while (i < lem->size)
+	{
+		printf("%16s\t", find_room_ind(i, lem)->name);
+		j = 0;
+		while (j < lem->size)
+		{
+			printf("%d ", lem->smezh[i][j]);
+			j++;
+		}
+		printf("\n");
+		i++;
+	}
+}
 
 int			remove_from_smezh(t_room *room, t_lemin *lem)
 {
@@ -90,10 +90,6 @@ static void	remove_deadends(t_lemin *lem)
 						all_clear = remove_from_smezh(room, lem);
 		}
 	}
-	remove_input_forks(lem);
-	remove_input_forks_dumb(lem);
-	remove_output_forks(lem);
-	create_paths(lem);
 }
 
 /*
@@ -120,6 +116,16 @@ static void	count_in_out(t_lemin *lem)
 		rooms = rooms->next;
 	}
 	remove_deadends(lem);
+	ft_printf("1\n");
+	remove_input_forks(lem);
+	ft_printf("2\n");
+	remove_input_forks_dumb(lem);
+	ft_printf("3\n");
+	remove_deadends(lem);
+	ft_printf("4\n");
+	remove_output_forks(lem);
+	ft_printf("5\n");
+	create_paths(lem);
 }
 
 static void	remove_links(t_lemin *lem)

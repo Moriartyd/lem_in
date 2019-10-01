@@ -6,7 +6,7 @@
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/09 16:27:45 by cpollich          #+#    #+#             */
-/*   Updated: 2019/09/30 17:49:50 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/10/01 18:17:53 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,19 @@ int		valid_room(t_room *room1, t_room *room2)
 
 void	set_coord(t_room *room, char *line)
 {
-	room->x = ft_atoi(line + 1);
-	room->y = ft_atoi(ft_strchr(line + 1, ' ') + 1);
+	char	**arr;
+	int		i;
+
+	if (!(arr = ft_strsplit(line + 1, ' ')))
+		exit(-1);
+	i = 0;
+	while (arr[i])
+		i++;
+	if (i != 2)
+		exit(-1);
+	room->x = isint(arr[0]) ? ft_atoi(arr[0]) : (0);
+	room->y = isint(arr[1]) ? ft_atoi(arr[1]) : (0);
+	if ((!room->x && arr[0][0] != '0') || (!room->y && arr[1][0] != '0'))
+		exit(-1);
+	ft_doublestrdel(&arr);
 }

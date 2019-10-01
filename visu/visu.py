@@ -193,8 +193,6 @@ def main():
 	width, height = calc_size(coords, nodes, 100)
 	win = GraphWin('lem-in', width, height, autoflush = False)
 	win.setBackground(color_rgb(8, 17, 23))
-	Image(Point(width / 2, height / 2),
-		os.path.dirname(os.path.realpath(__file__)) + '/bg.gif').draw(win)
 	win.update()
 	radius = 1120 / sqrt((len(nodes) + 10) * 4) / 3
 	draw_links(links, nodes, win)

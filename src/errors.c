@@ -6,7 +6,7 @@
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/23 22:26:09 by cpollich          #+#    #+#             */
-/*   Updated: 2019/09/30 20:23:09 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/10/01 17:32:32 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,20 @@ int		check_lem(t_lemin *lem)
 		res += ft_putstr_fd("Error: Start-room may not reach End-room\n", 2);
 	return (res == 0 ? (0) : (-2));
 }
+
+/*
+**	1	- start
+** 	2	- end
+** 	3	- link
+**	4	- room
+**	5	- ants
+**	-1	- error
+**	-2	- error with lem
+**	-3	- error with links
+**	-4	- error with room
+**	-5	- undef
+**	0	- comment
+*/
 
 void	error_manager(t_lemin *lem, int error)
 {

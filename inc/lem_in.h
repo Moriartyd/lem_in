@@ -6,7 +6,7 @@
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/09 14:44:25 by cpollich          #+#    #+#             */
-/*   Updated: 2019/10/01 15:40:24 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/10/01 18:05:53 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ typedef struct		s_ant
 **	DEBUG	DELETE 	IT!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 */
 void				print_nodes(t_rooms *head);
+void				print_smezh(t_lemin *lem);
 
 /*
 **	Rooms memory
@@ -165,5 +166,6 @@ int					*remove_weights(int **w);
 **	Other
 */
 void				mem_clean(t_lemin *lem);
+int					isint(char *str);
 
 #endif

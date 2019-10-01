@@ -6,7 +6,7 @@
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/23 17:27:54 by cpollich          #+#    #+#             */
-/*   Updated: 2019/09/30 17:49:41 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/10/01 18:08:41 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,35 @@ static int		set_startend(t_lemin *lem)
 	if (lem->end)
 		lem->end->level = INT_MAX;
 	return (0);
+}
+
+int		isint(char *str)
+{
+	int		neg;
+	char	*s;
+
+	neg = 0;
+	if (*str == '-' || *str == '+')
+	{
+		str++;
+		neg = 1;
+	}
+	else if (*str == '+')
+		str++;
+	else if (!ft_isdigit(*str))
+		return (0);
+	s = str;
+	while (*s)
+	{
+		if (!ft_isdigit(*s))
+			return (0);
+		s++;
+	}
+	if ((!neg && ft_strlen(str) == 10 && ft_strcmp(str, "2147483647") > 0) ||
+		(neg && ft_strlen(str) == 10 && ft_strcmp(str, "2147483648") > 0) ||
+		(ft_strlen(str) > 10))
+		return (0);
+	return (1);
 }
 
 /*
@@ -47,7 +76,7 @@ int				parse_input(t_lemin *lem, char *n)
 	p[2] = 0;
 	p[1] = 0;
 	p[3] = 0;
-	output = "";
+	output = ft_strnew(0);
 	while (ft_gnl(p[0], &line) > 0 && p[1] >= 0)
 	{
 		ret = what_parse(line, lem, p, &output);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pathlen.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adavis <adavis@student.42.fr>              +#+  +:+       +#+        */
+/*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/26 18:26:35 by adavis            #+#    #+#             */
-/*   Updated: 2019/09/26 18:26:37 by adavis           ###   ########.fr       */
+/*   Updated: 2019/10/01 17:12:50 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ int		pathlen(t_lemin *lem, int index)
 	cnt = 1;
 	while (lem->end->index != index)
 	{
-		i = -1;
-		while (++i < lem->size)
+		i = lem->size - 1;
+		while (i >= 0)
 		{
 			if (lem->smezh[index][i] == 1)
 			{
@@ -29,6 +29,7 @@ int		pathlen(t_lemin *lem, int index)
 				index = i;
 				break ;
 			}
+			i--;
 		}
 	}
 	return (cnt);
