@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   remove_forks.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adavis <adavis@student.42.fr>              +#+  +:+       +#+        */
+/*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/26 21:38:31 by cpollich          #+#    #+#             */
-/*   Updated: 2019/10/01 14:55:46 by adavis           ###   ########.fr       */
+/*   Updated: 2019/10/01 15:10:45 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,45 +57,45 @@ static void	clean_outs(t_lemin *lem, int index)
 	}
 }
 
-// void		remove_output_forks(t_lemin *lem)
-// {
-// 	int		lvl;
-// 	t_rooms	*rooms;
-// 	t_rooms	*tmp;
-
-// 	if (!(tmp = find_final_room(lem)))
-// 		return ;
-// 	lvl = find_final_room(lem)->room->level + 1;
-// 	while (--lvl > 0)
-// 	{
-// 		rooms = lem->list;
-// 		while ((rooms = is_same_lvl(lvl, rooms)))
-// 		{
-// 			clean_outs(lem, rooms->room->index);
-// 			rooms = rooms->next;
-// 		}
-// 	}
-// }
-
 void		remove_output_forks(t_lemin *lem)
 {
 	int		lvl;
 	t_rooms	*rooms;
 	t_rooms	*tmp;
+
 	if (!(tmp = find_final_room(lem)))
 		return ;
 	lvl = find_final_room(lem)->room->level + 1;
 	while (--lvl > 0)
 	{
 		rooms = lem->list;
-		while (rooms)
-		{
-			if (rooms->room->level == lvl && rooms->room->out > 1)
-				clean_outs(lem, rooms->room->index);
+		while ((rooms = is_same_lvl(lvl, rooms)))
+		{ 
+			clean_outs(lem, rooms->room->index);
 			rooms = rooms->next;
 		}
 	}
 }
+
+// void		remove_output_forks(t_lemin *lem)
+// {
+// 	int		lvl;
+// 	t_rooms	*rooms;
+// 	t_rooms	*tmp;
+// 	if (!(tmp = find_final_room(lem)))
+// 		return ;
+// 	lvl = find_final_room(lem)->room->level + 1;
+// 	while (--lvl > 0)
+// 	{
+// 		rooms = lem->list;
+// 		while (rooms)
+// 		{
+// 			if (rooms->room->level == lvl && rooms->room->out > 1)
+// 				clean_outs(lem, rooms->room->index);
+// 			rooms = rooms->next;
+// 		}
+// 	}
+// }
 
 void		remove_input_forks(t_lemin *lem)
 {

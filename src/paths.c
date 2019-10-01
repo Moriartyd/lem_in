@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   paths.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adavis <adavis@student.42.fr>              +#+  +:+       +#+        */
+/*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/26 21:44:23 by cpollich          #+#    #+#             */
-/*   Updated: 2019/10/01 14:23:06 by adavis           ###   ########.fr       */
+/*   Updated: 2019/10/01 15:04:19 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void	create_paths(t_lemin *lem)
 		}
 	}
 	sort_array(paths, pathscnt(lem));
-	print_paths(paths, lem);
+	// print_paths(paths, lem);
 	move_ants(paths, weigh_paths(paths, lem), lem);
 }
 

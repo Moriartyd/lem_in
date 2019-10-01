@@ -164,8 +164,8 @@ def move_ants(ants, tact, nodes, win, speed = 0):
 			if node.name == move[1]:
 				dest = Point(node.x, node.y)
 		ant = ants[int(move[0]) - 1]
-		dx[move[0]] = (dest.getX() - ant['ant'].getCenter().getX()) / 100
-		dy[move[0]] = (dest.getY() - ant['ant'].getCenter().getY()) / 100
+		dx[move[0]] = (dest.getX() - ant['ant'].getCenter().getX()) / 50
+		dy[move[0]] = (dest.getY() - ant['ant'].getCenter().getY()) / 50
 	while flag:
 		flag = False
 		for move in tact:

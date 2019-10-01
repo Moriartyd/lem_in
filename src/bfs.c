@@ -6,7 +6,7 @@
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/24 13:15:40 by adavis            #+#    #+#             */
-/*   Updated: 2019/10/01 14:44:01 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/10/01 15:04:06 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,38 +17,38 @@
 **	DEBUG PRINT
 */
 
-void		print_levels(t_lemin *lem)
-{
-	while (lem->list)
-	{
-		printf("%s\t%d\n", lem->list->room->name, lem->list->room->level);
-		lem->list = lem->list->next;
-	}
-}
+// void		print_levels(t_lemin *lem)
+// {
+// 	while (lem->list)
+// 	{
+// 		printf("%s\t%d\n", lem->list->room->name, lem->list->room->level);
+// 		lem->list = lem->list->next;
+// 	}
+// }
 
-void		print_smezh(t_lemin *lem)
-{
-	int		i;
-	int		j;
+// void		print_smezh(t_lemin *lem)
+// {
+// 	int		i;
+// 	int		j;
 
-	i = 0;
-	while (i++ < lem->size * 2 + 16)
-		printf("-");
-	printf("\n");
-	i = 0;
-	while (i < lem->size)
-	{
-		printf("%16s\t", find_room_ind(i, lem)->name);
-		j = 0;
-		while (j < lem->size)
-		{
-			printf("%d ", lem->smezh[i][j]);
-			j++;
-		}
-		printf("\n");
-		i++;
-	}
-}
+// 	i = 0;
+// 	while (i++ < lem->size * 2 + 16)
+// 		printf("-");
+// 	printf("\n");
+// 	i = 0;
+// 	while (i < lem->size)
+// 	{
+// 		printf("%16s\t", find_room_ind(i, lem)->name);
+// 		j = 0;
+// 		while (j < lem->size)
+// 		{
+// 			printf("%d ", lem->smezh[i][j]);
+// 			j++;
+// 		}
+// 		printf("\n");
+// 		i++;
+// 	}
+// }
 
 int			remove_from_smezh(t_room *room, t_lemin *lem)
 {

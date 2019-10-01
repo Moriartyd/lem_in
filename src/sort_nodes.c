@@ -6,7 +6,7 @@
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/09 21:02:33 by cpollich          #+#    #+#             */
-/*   Updated: 2019/09/30 21:16:50 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/10/01 15:20:59 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,9 +63,11 @@ t_rooms		*is_same_lvl(int lvl, t_rooms *head)
 	t_rooms	*rooms;
 
 	rooms = head;
-	while (rooms && !(rooms->room->level != lvl || rooms->room->out <= 1))
+	while (rooms)
+	{
+		if (rooms->room->level == lvl && rooms->room->out > 1)
+			return (rooms);
 		rooms = rooms->next;
-	if (rooms && rooms->room->level == lvl && rooms->room->out > 1)
-		return (rooms);
+	}
 	return (NULL);
 }

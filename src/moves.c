@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   moves.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adavis <adavis@student.42.fr>              +#+  +:+       +#+        */
+/*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/01 13:25:43 by adavis            #+#    #+#             */
-/*   Updated: 2019/10/01 14:59:57 by adavis           ###   ########.fr       */
+/*   Updated: 2019/10/01 15:17:12 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void	move_ants(int **paths, int *weights, t_lemin *lem)
 	while (ants_remaining(ants, lem))
 	{
 		j = -1;
-		while (++j < pathscnt(lem))
+		while (++j < pathscnt(lem) && i < lem->ants)
 		{
 			if (ants_remaining(ants, lem) > weights[j])
 			{
